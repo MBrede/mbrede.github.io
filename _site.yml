@@ -8,3 +8,4 @@ navbar:
       href: about.html
     - text: EDVI
       href: "EDVI/"
+output_dir: "www"
