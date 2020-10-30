@@ -1,1 +1,3 @@
-# mbrede.github.io \n The personal website of Max Brede
+# mbrede.github.io
+
+The personal website of Max Brede.
