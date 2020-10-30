@@ -1,0 +1,10 @@
+name: "Max Brede"
+navbar:
+  title: "Max Brede"
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "Impressum und Datenschutz"
+      href: about.html
+    - text: EDVI
+      href: "EDVI/"

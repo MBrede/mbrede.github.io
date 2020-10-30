@@ -1,0 +1,22 @@
+---
+title: "<br>"
+---
+
+
+
+### Herzlich willkommen auf meiner Website.
+
+Content gibt's hier, außer meinen Materialien zu Lehrveranstaltungen, aber nicht. Entschuldigung.
+
+Gehen Sie einfach weiter zur <a href="EDVI/"> Einführung zur computerunterstützen Datenanalyse mit R</a>.
+
+
+<br>
+
+### Kontakt
+
+Max Brede
+
+<a href="https://www.ws.informatik.uni-kiel.de/de/team/Max_Brede"> Arbeitsgruppe Web Science am Institut für Informatik der CAU zu Kiel </a>
+
+<a href="https://www.psychologie.uni-kiel.de/de/mitarbeitende"> Abteilung Methodenlehre am Institut für Psychologie der CAU zu Kiel </a>
