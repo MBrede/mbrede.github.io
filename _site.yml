@@ -7,5 +7,5 @@ navbar:
     - text: "Impressum und Datenschutz"
       href: about.html
     - text: EDVI
-      href: "EDVI/"
+      href: https://mbrede.github.io/CAU_Kiel_EDVI/
 output_dir: "docs"
