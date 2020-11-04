@@ -10,9 +10,9 @@ title: "<br>"
         
         function resize() {
             frame = document.getElementById('iframe')
-            frame.style.height = window.innerHeight * .9  + 'px'
+            frame.style.height = window.innerHeight * .8  + 'px'
             frame.style.width = window.innerWidth * .8 + 'px'
-            frame.style.left = window.innerWidth * .1 + 'px'
+            frame.style.left = window.innerWidth * .05 + 'px'
             frame.style.position = "absolute"
         }
  </script>
