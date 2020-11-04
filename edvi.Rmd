@@ -1,0 +1,18 @@
+---
+title: "<br>"
+---
+
+<iframe name="edvi" id="iframe" src="https://mbrede.github.io/CAU_Kiel_EDVI/" title="Seiteninhalt im iFrame" frameborder="0"></iframe>
+
+<script type="text/javascript">
+        document.getElementById('iframe').onload = resize()
+        document.getElementById('iframe').onresize = resize()
+        
+        function resize() {
+            frame = document.getElementById('iframe')
+            frame.style.height = window.innerHeight * .9 + 'px'
+            frame.style.width = window.innerWidth * .8 + 'px'
+            frame.style.left = window.innerWidth * .1 + 'px'
+            frame.style.position = "absolute"
+        }
+ </script>

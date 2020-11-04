@@ -312,18 +312,20 @@ $(document).ready(function () {
 </div>
 
 
-<div id="herzlich-willkommen-auf-meiner-website." class="section level3">
-<h3>Herzlich willkommen auf meiner Website.</h3>
-<p>Content gibt’s hier, außer meinen Materialien zu Lehrveranstaltungen, aber nicht. Entschuldigung.</p>
-<p>Gehen Sie einfach weiter zur <a href="EDVI/"> Einführung zur computerunterstützen Datenanalyse mit R</a>.</p>
-<p><br></p>
-</div>
-<div id="kontakt" class="section level3">
-<h3>Kontakt</h3>
-<p>Max Brede</p>
-<p><a href="https://www.ws.informatik.uni-kiel.de/de/team/Max_Brede"> Arbeitsgruppe Web Science am Institut für Informatik der CAU zu Kiel </a></p>
-<p><a href="https://www.psychologie.uni-kiel.de/de/mitarbeitende"> Abteilung Methodenlehre am Institut für Psychologie der CAU zu Kiel </a></p>
-</div>
+<iframe name="verplanung" id="iframe" src="https://mbrede.github.io/CAU_KIEL_Versuchsplanung/" title="Seiteninhalt im iFrame" frameborder="0">
+</iframe>
+<script type="text/javascript">
+        document.getElementById('iframe').onload = resize()
+        document.getElementById('iframe').onresize = resize()
+        
+        function resize() {
+            frame = document.getElementById('iframe')
+            frame.style.height = window.innerHeight * .9  + 'px'
+            frame.style.width = window.innerWidth * .8 + 'px'
+            frame.style.left = window.innerWidth * .1 + 'px'
+            frame.style.position = "absolute"
+        }
+ </script>
 
 
 

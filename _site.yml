@@ -6,8 +6,8 @@ navbar:
       href: index.html
     - text: "Impressum und Datenschutz"
       href: about.html
-    - text: EDVI
-      href: https://mbrede.github.io/CAU_Kiel_EDVI/
-    - text: Versuchsplanung
-      href: https://mbrede.github.io/CAU_KIEL_Versuchsplanung/
+    - text: "EDVI"
+      href: edvi.html
+    - text: "Versuchsplanung"
+      href: vplan.html
 output_dir: "docs"
