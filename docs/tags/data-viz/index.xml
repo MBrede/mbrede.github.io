@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Viz on Max Brede</title>
+    <link>https://max-bre.de/tags/data-viz/</link>
+    <description>Recent content in Data Viz on Max Brede</description>
+    <generator>Source Themes academia (https://sourcethemes.com/academic/)</generator>
+    <language>de-de</language>
+    <copyright>Copyright &amp;copy; {year}</copyright>
+    <lastBuildDate>Sun, 09 Jan 2022 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://max-bre.de/tags/data-viz/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>EDV I</title>
+      <link>https://max-bre.de/skripte/edvi/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/skripte/edvi/</guid>
+      <description>
+
+
+&lt;p&gt;Als Einführung in die Datenanalyse mit R für Studierende mit ersten Statistikkenntnissen ist das Skript zu EDV I entstanden, das ich in der Lehre der Übung zur Computerunterstützten Datenanalyse genutzt habe.
+Die Veranstaltung beschäftigt sich mit den Rsten Schritten im Umgang mit der freien Programmiersprache R, hin zu vollständigen Deskriptiven Analysen inklusive Darstellungen mit &lt;code&gt;ggplot&lt;/code&gt; und Aggregationen und Datenaufbereitungen mit den anderen &lt;code&gt;tidyverse&lt;/code&gt;-Paketen.
+Diese Übung durfte ich in den Wintersemestern 16/17, 17/18, 18/19, 19/20, 20/21 und 21/22 planen und veranstalten.&lt;/p&gt;
+&lt;iframe width=&#34;90%&#34; height=&#34;500&#34; name=&#34;iframe&#34; src=&#34;https://mbrede.github.io/CAU_Kiel_EDVI/&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;Sollte die Darstellung nicht richtig funktionieren, kann das Skript auch &lt;a href=&#34;https://mbrede.github.io/CAU_Kiel_EDVI/&#34;&gt;hier&lt;/a&gt; gefunden werden.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R Crashkurs</title>
+      <link>https://max-bre.de/skripte/crash/</link>
+      <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/skripte/crash/</guid>
+      <description>
+
+
+&lt;p&gt;Dieses Skript ist im Rahmen eines R-Crashkurses am KfN entstanden und ist darauf ausgelegt, Statistik-Anwendern die schon Erfahrungen mit anderen Statistik-Programmen und Base-R haben, die Vorteile der Auswertung mit dem &lt;code&gt;tidyverse&lt;/code&gt; nahezubringen und einen Abriss über die üblichen Schritte zu geben.&lt;/p&gt;
+&lt;p&gt;Dieses Skript hat keinen Anspruch auf Vollständigkeit, es geht nur um einen Einstieg in die Auswertung mit R als Alternative zu anderen Software-Paketen.&lt;/p&gt;
+&lt;iframe width=&#34;90%&#34; height=&#34;500&#34; name=&#34;iframe&#34; src=&#34;https://mbrede.github.io/R_KfN/&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;Sollte die Darstellung nicht richtig funktionieren, kann das Skript auch &lt;a href=&#34;https://mbrede.github.io/R_KfN/&#34;&gt;hier&lt;/a&gt; gefunden werden.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

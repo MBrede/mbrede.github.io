@@ -7,9 +7,118 @@
     <generator>Source Themes academia (https://sourcethemes.com/academic/)</generator>
     <language>de-de</language>
     <copyright>Copyright &amp;copy; {year}</copyright>
+    <lastBuildDate>Wed, 23 Nov 2022 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="https://max-bre.de/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Programmieren</title>
+      <link>https://max-bre.de/tags/programmieren/</link>
+      <pubDate>Wed, 23 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/programmieren/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://max-bre.de/tags/r/</link>
+      <pubDate>Wed, 23 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shiny</title>
+      <link>https://max-bre.de/tags/shiny/</link>
+      <pubDate>Wed, 23 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/shiny/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zitationen</title>
+      <link>https://max-bre.de/tags/zitationen/</link>
+      <pubDate>Wed, 23 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/zitationen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Admin</title>
+      <link>https://max-bre.de/tags/admin/</link>
+      <pubDate>Sun, 22 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/admin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://max-bre.de/tags/linux/</link>
+      <pubDate>Sun, 22 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nextcloud</title>
+      <link>https://max-bre.de/tags/nextcloud/</link>
+      <pubDate>Sun, 22 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/nextcloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Raspberry Pi</title>
+      <link>https://max-bre.de/tags/raspberry-pi/</link>
+      <pubDate>Sun, 22 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/raspberry-pi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Viz</title>
+      <link>https://max-bre.de/tags/data-viz/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/data-viz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Wrangling</title>
+      <link>https://max-bre.de/tags/data-wrangling/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/data-wrangling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Experimentieren</title>
+      <link>https://max-bre.de/tags/experimentieren/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/experimentieren/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Statistik</title>
+      <link>https://max-bre.de/tags/statistik/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/statistik/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

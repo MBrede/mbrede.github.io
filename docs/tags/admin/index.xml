@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Admin on Max Brede</title>
+    <link>https://max-bre.de/tags/admin/</link>
+    <description>Recent content in Admin on Max Brede</description>
+    <generator>Source Themes academia (https://sourcethemes.com/academic/)</generator>
+    <language>de-de</language>
+    <copyright>Copyright &amp;copy; {year}</copyright>
+    <lastBuildDate>Sun, 22 May 2022 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://max-bre.de/tags/admin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nextcloud auf dem Raspi Pi</title>
+      <link>https://max-bre.de/blog/pi_nextcloud/</link>
+      <pubDate>Sun, 22 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/blog/pi_nextcloud/</guid>
+      <description>
+
+
+&lt;p&gt;Eine Anleitung für mich selbst, wie meine Nextcloud aufgesetzt wurde.&lt;/p&gt;
+&lt;p&gt;Installation des Headless-Images nach der &lt;a href=&#34;https://www.pragmaticlinux.com/2021/08/raspberry-pi-headless-setup-with-the-raspberry-pi-imager/&#34;&gt;Pi-Installations-Anleitung&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Setzen der Fallback-Static-IP:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;sudo nano /etc/dhcpcd.conf&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Automount der Festplatte einrichten über ncp-config. Auf keinen Fall über die folgende fstab-Einstellung!&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;mkdir ~/nextcloud
+sudo nano /etc/fstab
+/dev/sda1 /home/pi/nextcloud ext4 defaults,noatime 0 2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Automatischer Shutdown um 22:00 Uhr:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;sudo crontab -e
+00 22 * * * sudo shutdown&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;System updaten:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;sudo apt-get update
+sudo apt-get upgrade&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nextcloud-Installation nach &lt;a href=&#34;https://www.heise.de/tipps-tricks/Nextcloud-auf-dem-Raspberry-Pi-so-geht-s-4363735.html&#34;&gt;Anleitung&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;curl -sSL https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh | sudo bash&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Wichtig! Zuerst init über Web-Präsenz(&lt;a href=&#34;https://nextcloudpi.local/&#34;&gt;https://nextcloudpi.local/&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Bei Frage nach SQL-Nutzer: wegen SSH-Zugang muss Passwort für root gesetzt werden, dazu einfach mysql per sudo aufrufen und wie folgt Passwort setzen:&lt;/p&gt;
+&lt;pre class=&#34;sql&#34;&gt;&lt;code&gt;use nextcloud;
+ALTER USER &amp;#39;ncp&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;new_password&amp;#39;;
+FLUSH PRIVILEGES;
+exit&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Wenn nicht geklappt ncp-init:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;sudo ncp-config
+config
+init&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Dann hinzufügen der trusted domains.&lt;/p&gt;
+&lt;p&gt;Anschließend ssl-Zertifikat beantragen. http-Zugang muss freigeschaltet werden.&lt;/p&gt;
+&lt;p&gt;Dann festlegen dass apache nach mysql startet:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/nextcloud/server/issues/22119&#34; class=&#34;uri&#34;&gt;https://github.com/nextcloud/server/issues/22119&lt;/a&gt;&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;sudo nano /lib/systemd/system/apache2@.service
+sudo nano /lib/systemd/system/apache2.service
+
+After=mysql.service network.target remote-fs.target nss-lookup.targe&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Abschließend noch data- und db-dir auf die Festplatte verschieben.&lt;/p&gt;
+&lt;p&gt;Hoffentlich läuft es dann.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

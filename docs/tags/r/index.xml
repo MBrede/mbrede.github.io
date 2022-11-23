@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Max Brede</title>
+    <link>https://max-bre.de/tags/r/</link>
+    <description>Recent content in R on Max Brede</description>
+    <generator>Source Themes academia (https://sourcethemes.com/academic/)</generator>
+    <language>de-de</language>
+    <copyright>Copyright &amp;copy; {year}</copyright>
+    <lastBuildDate>Wed, 23 Nov 2022 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://max-bre.de/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Crossref-Citations</title>
+      <link>https://max-bre.de/shiny/crossref/</link>
+      <pubDate>Wed, 23 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/shiny/crossref/</guid>
+      <description>
+
+
+&lt;p&gt;Eine App zur Sammlung von Zitaten auf Crossref und Open Citations.&lt;/p&gt;
+&lt;iframe width=&#34;90%&#34; height=&#34;500&#34; name=&#34;iframe&#34; src=&#34;https://mbrede.shinyapps.io/crossref_citations/&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;Sollte die Darstellung nicht richtig funktionieren, kann das Skript auch &lt;a href=&#34;https://mbrede.shinyapps.io/crossref_citations/&#34;&gt;hier&lt;/a&gt; gefunden werden.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>EDV I</title>
+      <link>https://max-bre.de/skripte/edvi/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/skripte/edvi/</guid>
+      <description>
+
+
+&lt;p&gt;Als Einführung in die Datenanalyse mit R für Studierende mit ersten Statistikkenntnissen ist das Skript zu EDV I entstanden, das ich in der Lehre der Übung zur Computerunterstützten Datenanalyse genutzt habe.
+Die Veranstaltung beschäftigt sich mit den Rsten Schritten im Umgang mit der freien Programmiersprache R, hin zu vollständigen Deskriptiven Analysen inklusive Darstellungen mit &lt;code&gt;ggplot&lt;/code&gt; und Aggregationen und Datenaufbereitungen mit den anderen &lt;code&gt;tidyverse&lt;/code&gt;-Paketen.
+Diese Übung durfte ich in den Wintersemestern 16/17, 17/18, 18/19, 19/20, 20/21 und 21/22 planen und veranstalten.&lt;/p&gt;
+&lt;iframe width=&#34;90%&#34; height=&#34;500&#34; name=&#34;iframe&#34; src=&#34;https://mbrede.github.io/CAU_Kiel_EDVI/&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;Sollte die Darstellung nicht richtig funktionieren, kann das Skript auch &lt;a href=&#34;https://mbrede.github.io/CAU_Kiel_EDVI/&#34;&gt;hier&lt;/a&gt; gefunden werden.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>EDV II</title>
+      <link>https://max-bre.de/skripte/edvii/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/skripte/edvii/</guid>
+      <description>
+
+
+&lt;p&gt;Aufbauend auf dem &lt;a href=&#34;skripte/edvi&#34;&gt;Skript zu EDV I&lt;/a&gt; beschäftigt sich das Skript zu EDV II mit der R-basierten Auswertung von Datensätzen mit inferenzstatistischen Methoden. Zwar wird noch knapp auf Interpretation und Motivation der Verfahren eingegangen, das Augenmerk liegt aber auf der praktischen Durchführung der Verfahren.
+Die dazugehörige Übung zu Computerunterstützen Datenanalyse II durfte ich in den Sommersemestern 17, 18, 19, 20 und 21 planen und veranstalten.&lt;/p&gt;
+&lt;iframe width=&#34;90%&#34; height=&#34;500&#34; name=&#34;iframe&#34; src=&#34;https://mbrede.github.io/CAU_KIEL_EDVII/&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;Sollte die Darstellung nicht richtig funktionieren, kann das Skript auch &lt;a href=&#34;https://mbrede.github.io/CAU_KIEL_EDVII/&#34;&gt;hier&lt;/a&gt; gefunden werden.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>EDV2 - Demos</title>
+      <link>https://max-bre.de/shiny/edv2/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/shiny/edv2/</guid>
+      <description>
+
+
+&lt;p&gt;Demos für einzelne Aspekte der EDV2 - Übung. Vor allem Beispiele zur Demonstration des Nutzens von qqplots, außerdem eine Demo der Auswirkung unterschiedlicher Quadratsummen im Fall der zweifaktoriellen Varianzanalyse.&lt;/p&gt;
+&lt;iframe width=&#34;90%&#34; height=&#34;500&#34; name=&#34;iframe&#34; src=&#34;https://mbrede.shinyapps.io/EDV2/&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;Sollte die Darstellung nicht richtig funktionieren, kann das Skript auch &lt;a href=&#34;https://mbrede.shinyapps.io/EDV2/&#34;&gt;hier&lt;/a&gt; gefunden werden.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Korrelationshypothesen</title>
+      <link>https://max-bre.de/shiny/korrelationshypothesen/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/shiny/korrelationshypothesen/</guid>
+      <description>
+
+
+&lt;p&gt;Eine Demo zur Darstellung des Verhaltens des kritischen Wertes bei Verschiebung von Korrelations-Nullhypothesen. Mit dieser App kann einfach geguckt werden, wie sich p-Wert und kritischer Wert bei Anpassung von empirischer Korrelation, hypothetisierter Korrelation und Stichprobengröße verändern.&lt;/p&gt;
+&lt;iframe width=&#34;90%&#34; height=&#34;500&#34; name=&#34;iframe&#34; src=&#34;https://maxteflon.shinyapps.io/Korrelationshypothesen/&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;Sollte die Darstellung nicht richtig funktionieren, kann das Skript auch &lt;a href=&#34;https://maxteflon.shinyapps.io/Korrelationshypothesen/&#34;&gt;hier&lt;/a&gt; gefunden werden.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Programmieren in R | Experimente in Psychopy</title>
+      <link>https://max-bre.de/skripte/assumptions/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/skripte/assumptions/</guid>
+      <description>
+
+
+&lt;p&gt;Im Skript zu Programmierung in R und Experimentdesign in Psychopy geht es um das Schreiben eigener Funktionen und Programme in R und Design, Durchführung und Auswertung von (online-) Experimenten in psychopy.
+Das Ziel dieses Skriptes ist es, den Teilnehmenden der Seminare Forschungsorientierte Vertiefung: Forschungsmethoden und Psychologische Forschungsmethoden. Projektseminar I im WS 21/22 die Werkzeuge an die Hand zu geben, eigene Simulationsstudien durchzuführen und den Umgang mit statistischen Voraussetzungstests durch Anwender experimentell zu untersuchen.&lt;/p&gt;
+&lt;iframe width=&#34;90%&#34; height=&#34;500&#34; name=&#34;iframe&#34; src=&#34;https://mbrede.github.io/Assumptions/&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;Sollte die Darstellung nicht richtig funktionieren, kann das Skript auch &lt;a href=&#34;https://mbrede.github.io/Assumptions/&#34;&gt;hier&lt;/a&gt; gefunden werden.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Reinforcement-Roboter</title>
+      <link>https://max-bre.de/shiny/reinforcement/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/shiny/reinforcement/</guid>
+      <description>
+
+
+&lt;p&gt;Eine sehr, sehr basale Demo zur Darstellung des Grundprinzips von Reinforcement Learning. Die App lässt einen “Roboter” einen Pfad zum Ziel lernen, indem in einem Koordinatensystem Felder mit Gewichten versehen werden, die bedeuten, wie hilfreich ein Weg zum Finden des Ziels war.&lt;/p&gt;
+&lt;iframe width=&#34;90%&#34; height=&#34;500&#34; name=&#34;iframe&#34; src=&#34;https://maxteflon.shinyapps.io/reinforced_robot/&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;Sollte die Darstellung nicht richtig funktionieren, kann das Skript auch &lt;a href=&#34;https://maxteflon.shinyapps.io/reinforced_robot/&#34;&gt;hier&lt;/a&gt; gefunden werden.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R Crashkurs</title>
+      <link>https://max-bre.de/skripte/crash/</link>
+      <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/skripte/crash/</guid>
+      <description>
+
+
+&lt;p&gt;Dieses Skript ist im Rahmen eines R-Crashkurses am KfN entstanden und ist darauf ausgelegt, Statistik-Anwendern die schon Erfahrungen mit anderen Statistik-Programmen und Base-R haben, die Vorteile der Auswertung mit dem &lt;code&gt;tidyverse&lt;/code&gt; nahezubringen und einen Abriss über die üblichen Schritte zu geben.&lt;/p&gt;
+&lt;p&gt;Dieses Skript hat keinen Anspruch auf Vollständigkeit, es geht nur um einen Einstieg in die Auswertung mit R als Alternative zu anderen Software-Paketen.&lt;/p&gt;
+&lt;iframe width=&#34;90%&#34; height=&#34;500&#34; name=&#34;iframe&#34; src=&#34;https://mbrede.github.io/R_KfN/&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;Sollte die Darstellung nicht richtig funktionieren, kann das Skript auch &lt;a href=&#34;https://mbrede.github.io/R_KfN/&#34;&gt;hier&lt;/a&gt; gefunden werden.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
