@@ -2,84 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://max-bre.de/shiny/crossref/</loc>
-    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/</loc>
-    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/programmieren/</loc>
-    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/r/</loc>
-    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/shiny/</loc>
-    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/shiny/</loc>
-    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/</loc>
-    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/zitationen/</loc>
-    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/admin/</loc>
-    <lastmod>2022-05-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/blog/</loc>
-    <lastmod>2022-05-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/linux/</loc>
-    <lastmod>2022-05-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/nextcloud/</loc>
-    <lastmod>2022-05-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/blog/pi_nextcloud/</loc>
-    <lastmod>2022-05-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/raspberry-pi/</loc>
-    <lastmod>2022-05-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/data-viz/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/data-wrangling/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/skripte/edvi/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/skripte/edvii/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/shiny/edv2/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/experimentieren/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/shiny/korrelationshypothesen/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/skripte/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/skripte/assumptions/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/shiny/reinforcement/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/statistik/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/skripte/vplan/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://max-bre.de/authors/admin/</loc>
     <lastmod>2021-12-18T00:00:00+00:00</lastmod>
   </url><url>
@@ -90,6 +12,9 @@
     <lastmod>2021-12-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://max-bre.de/authors/isabella-peters/</loc>
+    <lastmod>2021-12-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://max-bre.de/</loc>
     <lastmod>2021-12-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://max-bre.de/publication_types/</loc>
@@ -125,11 +50,16 @@
     <loc>https://max-bre.de/authors/julian-sakmann/</loc>
     <lastmod>2021-07-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://max-bre.de/skripte/crash/</loc>
-    <lastmod>2020-12-11T00:00:00+00:00</lastmod>
+    <loc>https://max-bre.de/blog/</loc>
   </url><url>
     <loc>https://max-bre.de/categories/</loc>
   </url><url>
     <loc>https://max-bre.de/privacy/</loc>
+  </url><url>
+    <loc>https://max-bre.de/skripte/</loc>
+  </url><url>
+    <loc>https://max-bre.de/shiny/</loc>
+  </url><url>
+    <loc>https://max-bre.de/tags/</loc>
   </url>
 </urlset>
