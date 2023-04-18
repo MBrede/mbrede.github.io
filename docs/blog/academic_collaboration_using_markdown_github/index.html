@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="de-de">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academia 4.3.1">
+  <meta name="generator" content="Hugo 0.91.2" />
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Max Brede">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="git und die darauf basierenden Hosting-Services Github und Gitlab sind Tools zur Versionskontrolle, die im Entwicklungskontext den De-Facto Industriestandard darstellen. Der Grund für diesen Erfolg ist dabei die Baum-artige Struktur in der Änderungen am Code-Stamm getracked und nachvollzogen werden können.">
+
+  
+  <link rel="alternate" hreflang="de-de" href="https://max-bre.de/blog/academic_collaboration_using_markdown_github/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="hsl(339, 90%, 68%)">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans|Roboto+Mono&display=swap">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academia.min.f061a21f63bf4b7a5a9dd13669fcb02e.css">
+
+  
+
+  
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://max-bre.de/blog/academic_collaboration_using_markdown_github/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@BredeMax">
+  <meta property="twitter:creator" content="@BredeMax">
+  
+  <meta property="og:site_name" content="Max Brede">
+  <meta property="og:url" content="https://max-bre.de/blog/academic_collaboration_using_markdown_github/">
+  <meta property="og:title" content="Akademisches Schreiben mit Github und Quarto | Max Brede">
+  <meta property="og:description" content="git und die darauf basierenden Hosting-Services Github und Gitlab sind Tools zur Versionskontrolle, die im Entwicklungskontext den De-Facto Industriestandard darstellen. Der Grund für diesen Erfolg ist dabei die Baum-artige Struktur in der Änderungen am Code-Stamm getracked und nachvollzogen werden können."><meta property="og:image" content="https://max-bre.de/blog/academic_collaboration_using_markdown_github/featured.png">
+  <meta property="twitter:image" content="https://max-bre.de/blog/academic_collaboration_using_markdown_github/featured.png"><meta property="og:locale" content="de-de">
+  
+  <meta property="article:published_time" content="2023-03-07T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2023-03-07T00:00:00&#43;00:00">
+  
+
+  
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "hsl(339, 90%, 68%)",
+          "text": "#fff"
+        },
+        "button": {
+          "background": "#fff",
+          "text": "hsl(339, 90%, 68%)"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "Um unsere Webseite für Sie optimal zu gestalten und fortlaufend verbessern zu können, verwenden wir Cookies.",
+        "dismiss": "Verstanden!",
+        "link": "Mehr erfahren",
+        "href": "/privacy/"
+      }
+    })});
+</script>
+
+
+
+  
+
+
+
+
+
+  <title>Akademisches Schreiben mit Github und Quarto | Max Brede</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Suche</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Max Brede</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Zur Navigation"><span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"><span>Skripte</span><span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            
+            <li class="dropdown-item my-0 py-0 mx-0 px-0">
+              <a href="/skripte/edvi"><span>EDV I</span></a>
+            </li>
+            
+            <li class="dropdown-item my-0 py-0 mx-0 px-0">
+              <a href="/skripte/edvii"><span>EDV II</span></a>
+            </li>
+            
+            <li class="dropdown-item my-0 py-0 mx-0 px-0">
+              <a href="/skripte/assumptions"><span>Programmieren in R/Experimente in Psychopy</span></a>
+            </li>
+            
+            <li class="dropdown-item my-0 py-0 mx-0 px-0">
+              <a href="/skripte/crash"><span>R Crashkurs</span></a>
+            </li>
+            
+            <li class="dropdown-item my-0 py-0 mx-0 px-0">
+              <a href="/skripte/vplan"><span>Versuchsplanung</span></a>
+            </li>
+            
+          </ul>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/privacy#imp"><span>Impressum</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article py-5" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container split-header">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+        <img class="img-fluid w-100" src="/blog/academic_collaboration_using_markdown_github/featured_hu5bcc8129ba7cba1ebcd09424b945d074_31920_680x500_fill_q90_lanczos_smart1_3.png" itemprop="image" alt="">
+        
+    </div>
+    <div class="col-lg-8">
+      <h1 itemprop="name">Akademisches Schreiben mit Github und Quarto</h1>
+
+      
+
+      
+
+
+
+<meta content="2023-03-07 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2023-03-07 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>7 Mar 2023</time>
+  </span>
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+
+  
+
+</div>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    
+    </div>
+  </div>
+</div>
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      <p><code>git</code> und die darauf basierenden Hosting-Services Github und Gitlab sind Tools zur Versionskontrolle, die im Entwicklungskontext den De-Facto Industriestandard darstellen.
+Der Grund für diesen Erfolg ist dabei die Baum-artige Struktur in der Änderungen am Code-Stamm getracked und nachvollzogen werden können.
+Über verschiedene &ldquo;branches&rdquo; können außerdem Änderungen gebaut, erweitert und getestet werden, bevor sie in den zentralen Codestamm (bei Github der &ldquo;main&rdquo;-branch) &ldquo;gemerged&rdquo; werden.
+Dabei ist es generell möglich, Änderungen in allen möglichen Dateiformaten zu tracken, so richtig sinnvoll sind Änderungen und Änderungsabschnitte aber vor allem in Klartextformaten ohne Serialisierung verständlich.
+Textfiles müssen aber ja nicht notwendigerweise nur Code enthalten.
+Mit der wachsenden Beliebtheit von Rmarkdown und neuerdings Quarto geht (zumindest in der R-Community) der Trend zum Verfassen von Texten in auf markdown basierenden Formaten, die mit Hilfe von Pandoc in andere Formate kompiliert werden können.
+Da diese Formate in einfachen Textfiles abgespeichert werden, können so die Vorteile von git zum Tragen kommen.
+Ein workflow zum gemeinsamen Erstellen von Texten wie er zum Beispiel beim Schreiben gemeinsamer Publikationen nötig ist, gestützt auf eins der populären markdown Formate und git, könnte eine echte Alternative zur Co-Autorenschaft in Word sein.
+Dabei hat der vorgeschlagene Workflow die folgenden Vorteile:</p>
+<ul>
+<li>Quarto/Rmarkdown<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> haben auch ohne Kombination mit git Vorteile beim Erstellen und Einbinden von Grafiken, Tabellen und statistischen Ergebnissen</li>
+<li>mit git kommt ein Versionsmanagement dazu, dass Änderungen verfolgbar und auch zurückziehbar macht, ohne dass die Festplatte voll von <code>manuskript_final_v1_v3.docx</code> etc. wird</li>
+<li>die gesamte Änderungsgeschichte ließe sich publizieren, was aus Gesichtspunkten offener Wissenschaft attraktiv sein kann. Muss aber nicht.</li>
+<li>mit Github/Gitlab Issues kommt ein ganzer Stack an Projektmanagement-Tools dazu, der optional genutzt werden kann</li>
+<li>mit Github/Gitlab Action lassen sich Tests und Updates vor oder beim Commit automatisieren</li>
+<li>das Zusammenarbeiten über Betriebssystem-Grenzen hinweg ist problemlos. Kein Ärger mehr mit verschiedenen Office-Versionen oder Formatierungskonflikten zwischen MS Office und Open Scource Lösungen</li>
+</ul>
+<p>Dabei sind die Nachteile relativ gering - Quarto ist sehr weit gekommen und unterstützt alle Standard-Anforderungen an akademische Arbeiten - Zitieren, Formatieren und das Nutzen von Latex-Templates ist kein Problem.
+Dazu kommt dass zumindest bei der Nutzung von RStudio seit kurzem auch eine WYSIWYG-Lösung zur Texteditirung dazugekommen ist - die Bedienung des Visual Editors sollte Leuten, die an Word gewöhnt sind, keine so große Herausforderunge mehr bereiten wie das Schreiben in reinem <code>markdown</code>.
+Der einzige größere Nachteil ist, dass sich der Ablauf zum Kommentieren ändert - dazu kommen wir aber später.</p>
+<h3 id="einrichtung">Einrichtung</h3>
+<p>Unter Mac und Unix-Distros ist git vorinstalliert, unter Windows muss der Client noch installiert werden:
+<a href="https://git-scm.com/download/win">Download git</a></p>
+<p>Um Änderungen darzustellen gibt es zwar auch Funktionalität in RStudio, die github Desktop-GUI ist aber auch ganz schick:
+<a href="https://desktop.github.com/">Download github Desktop</a></p>
+<p>Rstudio als IDE bietet sich an, hier wird aber davon ausgegangen, dass die Installation bereits passiert ist.
+Außerdem ist zum Einbinden von Zitationen in Quarto-Texten eine Zotero-Installation mit dem <a href="https://retorque.re/zotero-better-bibtex/">Better Bibtex</a> Addon zu empfehlen.
+Im visuellen Editor gibt es einen eigenständigen Zitationsmanger mit Zotero-Connection, im Source-Editor habe ich aber bessere Erfahrungen mit dem <code>citr</code>-Paket gemacht, das es leider nicht mehr auf Cran aber noch auf <a href="https://github.com/crsh/citr">github</a> gibt.
+Zum Schreiben mit Rmarkdown oder der Erweiterung Bookdwon braucht es nur die entsprechenden R-Pakete, für Quarto is nocht eine eigenständige Quarto-Installation nötig. Die ist <a href="https://quarto.org/docs/get-started/">hier</a> zu finden.</p>
+<p>Zuletzt wird ein Github-Repo<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> benötigt.</p>
+<p>Zur Einrichtung braucht es erst einen Github-Account, der Rest kann über die Github-Desktop-GUI erledigt werden.
+Nach der Anmeldung in der GUI kann dafür einfach wie in <a href="#fig-CreateRepo">Figure 1</a> zu sehen auf <code>File -&gt; New repository</code> geklickt oder <code>Strg + N</code> gedrückt werden.</p>
+<!-- raw HTML omitted -->
+<p>Im sich daraufhin öffnenden Dialog (<a href="#fig-repoDialogue">Figure 2</a>) kann das zu erstellende Repo eingerichtet werden.
+Neben Name, Beschreibung und lokalem Speicherort kann hier auch eine Lizenz und ein gitignore-Vorbild angegeben werden.
+Das gitignore-File gibt an, welche Dateien grundsätzlich nicht ins Repo aufgenommen werden sollen - für Projekte wie hier beschrieben bietet sich hier das R-Template an.
+Außerdem</p>
+<!-- raw HTML omitted -->
+<p>Nach der lokalen Erstellung muss das Repo noch mit einem Github-remote verknüpft werden. Das kann einfach mit &ldquo;Publish Repository&rdquo; (<a href="#fig-publishRepo">Figure 3</a>) geschehen, solange noch kein Repo mit dem entsprechenden Namen existiert.</p>
+<!-- raw HTML omitted -->
+<p>Wenn sich nun in Github Web angemeldet wird, müsste das neue repository in der Liste auftauchen.
+Nach der o.g. Erstellung können im Repo unter den Einstellungen -&gt; Collaborators noch Coautoren eingeladen werden.</p>
+<p>Als Vorbereitung des Erstellens von Issues für Kommentare kann dem Repo noch die <a href="https://github.com/marketplace/actions/todo-to-issue">TODO to Issue Action</a> hinzugefügt werden. Diese legt automatisch Issues an, wenn in einem Textfile ein TODO-Kommentar angelegt ist.
+Zum Einbinden in das Repo muss im Repo ein Ordner namens <code>.github</code> und darin einer namens <code>workflows</code> angelegt werden.
+In diesem <code>workflows</code>-Ordner wird dann ein YAML file mit dem Namen <code>TODO.yml</code> angelegt, das den folgenden Inhalt enthält:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;Run TODO to Issue&#34;</span>
+<span style="color:#f92672">on</span>: [<span style="color:#e6db74">&#34;push&#34;</span>]
+<span style="color:#f92672">jobs</span>:
+    <span style="color:#f92672">build</span>:
+        <span style="color:#f92672">runs-on</span>: <span style="color:#e6db74">&#34;ubuntu-latest&#34;</span>
+        <span style="color:#f92672">steps</span>:
+            - <span style="color:#f92672">uses</span>: <span style="color:#e6db74">&#34;actions/checkout@v3&#34;</span>
+            - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;TODO to Issue&#34;</span>
+              <span style="color:#f92672">uses</span>: <span style="color:#e6db74">&#34;alstr/todo-to-issue-action@v4&#34;</span>
+              <span style="color:#f92672">with</span>:
+                <span style="color:#f92672">AUTO_ASSIGN</span>: <span style="color:#66d9ef">true</span> <span style="color:#75715e">#Ersteller zuweisen wenn nicht anders angegeben</span>
+                <span style="color:#f92672">IDENTIFIERS</span>: <span style="color:#e6db74">&#39;[{&#34;name&#34;: &#34;COMMENT&#34;, &#34;labels&#34;: [&#34;comment&#34;]}, {&#34;name&#34;: &#34;SUGGESTION&#34;, &#34;labels&#34;: [&#34;suggestion&#34;]}]&#39;</span> <span style="color:#75715e"># Liste mit Standard-Issue-Tags</span>
+</code></pre></div><p>Damit die Action läuft muss die Änderung noch ins Repo gepushed werden. Dazu einmal in Github Dektop committen (<a href="#fig-commit">Figure 4</a>) und dann pushen (<a href="#fig-push">Figure 5</a>).</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="schreiben">Schreiben</h2>
+<p>Um einen Artikel zu schreiben bietet sich an, entweder bookdown oder quarto zu nutzen. Beide unterstützen das Schreiben eines Übergeordneten Dokuments in einer Reihe von anderen Dokumenten, zum Beispiel aufgesplittet nach Kapiteln.
+Das Aufteilen ist nicht unbedingt nötig, kann aber das Zusammenarbeiten vereinfachen.</p>
+<p>Das Arbeiten mit einem Quarto-Stack hat außerdem den Vorteil, dass Auswertung, Poster, Paper und Präsentation in einem Abwasch erledigt werden können und alles an einer Stelle gesammelt vorliegt.</p>
+<p>Ein <code>_quarto.yml</code>, das Zweck genutzt wird, könnte wie folgt aussehen:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">project<span style="color:#f92672">:</span>
+  output<span style="color:#f92672">-</span>dir<span style="color:#f92672">:</span> _output
+  render<span style="color:#f92672">:</span>
+    <span style="color:#f92672">-</span> _quarto<span style="color:#f92672">/</span>paper.qmd
+
+toc<span style="color:#f92672">:</span> false
+number<span style="color:#f92672">-</span>sections<span style="color:#f92672">:</span> false
+bibliography<span style="color:#f92672">:</span> references.bib
+csl<span style="color:#f92672">:</span> _quarto<span style="color:#f92672">/</span>apa.csl
+
+title<span style="color:#f92672">:</span> Testartikel
+
+format<span style="color:#f92672">:</span>
+  html<span style="color:#f92672">:</span>
+    theme<span style="color:#f92672">:</span> cosmo
+  pdf<span style="color:#f92672">:</span>
+    documentclass<span style="color:#f92672">:</span> scrreprt
+</code></pre></div><p>Der Text kann dann einfach in den einzelnen Textfiles runter geschrieben werden. Wenn mehrere Kapitel in einem Dokument eingebunden werden sollen, kann die <a href="https://quarto.org/docs/authoring/includes.html">includes</a>-Syntax von Quarto genutzt werden.
+Der Ordner mit den Quarto-Files wurde in diesem Beispiel mit einem Unterstrich eingeleitet, damit beim Rendern nicht automatisch für jedes File ein Output generiert wird.</p>
+<h3 id="formatierung-in-quarto">Formatierung in Quarto</h3>
+<p>Quarto bietet vielfältige Formatierungsoptionen, um das Aussehen von Texten und Grafiken anzupassen. Die <a href="https://quarto.org/docs/reference/">offizielle Dokumentation</a> enthält ausführliche Informationen und Beispiele zur Formatierung für verschiedene Output-Formate.</p>
+<p>Tabellen und Grafiken können außerdem direkt in R oder Python Codechunks erstellt und eingebunden werden, Beispiele für gute Pakete zur Formatierung von Tabellen in R sind <a href="https://hughjonesd.github.io/huxtable/huxtable.html">huxtable</a> und <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">kableExtra</a>.</p>
+<p>Für Grafiken führt in R natürlich kein Weg an <a href="https://ggplot2.tidyverse.org/">ggplot</a> vorbei, für Python ist <a href="https://seaborn.pydata.org/">seaborn</a> eine gute Anlaufstelle.</p>
+<p><a href="https://quarto.org/docs/authoring/figures.html#figure-basics">Grafiken</a> und <a href="https://quarto.org/docs/authoring/tables.html">Tabellen</a> können dann über die Chunk-Optionen in Quarto beschriftet werden und über die in der <a href="https://quarto.org/docs/authoring/figures.html#cross-references">Dokumentation</a> beschriebenen Syntax Cross-referenziert werden. Mögliche Chunk-Optionen sind in der <a href="https://quarto.org/docs/reference/cells/cells-knitr.html">knitr-Referenz</a> aufgelistet.</p>
+<h3 id="zitate-in-quarto">Zitate in Quarto</h3>
+<p>Zotero bietet in Kombination mit dem citr-Paket und Better BibTeX eine hervorragende Möglichkeit, Literaturverweise in Quarto-Dokumenten zu verwalten. Nach der Installation von Zotero und Better BibTeX kann entweder direkt über citr auf die Zotero Bibliothek (siehe die <a href="(https://github.com/crsh/citr)">citr-Dokumentation</a> oder auf ein aus Zotero exportiertes .bib-file zugegriffen werden. Im Quarto-Dokument kann dann auf Referenzen verwiesen werden, indem der folgende Passus in den _quarto.yml YAML-Header eingefügt wird:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">bibliography<span style="color:#f92672">:</span> references.bib
+csl<span style="color:#f92672">:</span> quarto<span style="color:#f92672">/</span>apa.csl
+</code></pre></div><p>Über Addins -&gt; CITR Insert citation kann die jeweilige Bibliothek durchsucht und die Referenz eingefügt werden. Wenn aus der Zotero-Bibliothek referenziert wird, wird das <code>references.bib</code>-File automatisch ergänzt. Beim Rendern des Dokuments wird die Literatursammlung im unter cls im header angegebenen Format automatisch am Ende des Dokuments oder an der mit dem folgenden Inhalt angegebenen Stelle eingefügt:</p>
+<pre tabindex="0"><code class="language-quarto" data-lang="quarto">::: {#refs}
+:::
+</code></pre><h3 id="format-vorlagen-auf-quarto-dokumente-anwenden">Format-Vorlagen auf Quarto-Dokumente anwenden</h3>
+<p>Quarto unterstützt die Verwendung von Format-Vorlagen, um das Design von Dokumenten anzupassen. Um z.B. eine LaTeX-Vorlage (wie zum Beispiel von einem Journal ausgegeben) auf ein Quarto-Dokument anzuwenden, müssen die folgenden Zeilen in den YAML-Header des Quarto-Dokuments eingefügt werden:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">format<span style="color:#f92672">:</span>
+  pdf<span style="color:#f92672">:</span>
+    documentclass<span style="color:#f92672">:</span> my<span style="color:#f92672">-</span>template
+    includes<span style="color:#f92672">:</span>
+      in_header<span style="color:#f92672">:</span> my<span style="color:#f92672">-</span>template.tex
+</code></pre></div><p>Weitere Informationen zum Anpassen von PDF-Dokumenten mit Quarto- und LaTeX-Vorlagen sind in der <a href="https://quarto.org/docs/journals/templates.html">Quarto-Dokumentation</a> zu finden.</p>
+<h2 id="zusammenarbeit">Zusammenarbeit</h2>
+<h3 id="kommentieren">Kommentieren</h3>
+<p>Dank der <a href="https://github.com/marketplace/actions/todo-to-issue">TODO to Issue Action</a> werden Inline-Kommentare in den Quarto- oder R Markdown-Dateien direkt in GitHub Issues umgewandelt. Dies ist besonders nützlich, um Feedback oder Anmerkungen während des Schreibprozesses zu geben und vor allem Anmerkungen direkt diskutieren zu können.
+Um dieses Feature zu nutzen, müssen Kommentare zu einem Textabschnitt wie folgt direkt in das qmd-file geschrieben werden:</p>
+<ul>
+<li>Kommentare sollten mit TODO, COMMENT oder SUGGESTION beginnen und können in HTML- oder R-Kommentaren platziert werden. Hinter die Anmerkungsart muss in Klammern der github-tag des Kommentar-Autors genannt werden. Ein Kommentar könnte zum Beispiel so aussehen:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#75715e">&lt;!-- TODO(MBrede): Die Grafik könnte mehr Farbe vertragen.--&gt;</span>
+</code></pre></div><ul>
+<li>Mit &ldquo;assignees:&rdquo; kann eine Liste von Projektmitarbeitern angegeben werdne, die im Issue eingebunden und damit per Mail informiert werden soll:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#75715e">&lt;!-- TODO(MBrede): Die Grafik könnte mehr Farbe vertragen.
+</span><span style="color:#75715e">assignees: MBrede, vlerche--&gt;</span>
+</code></pre></div><ul>
+<li>Mit &ldquo;labels:&rdquo; können außerdem direkt Tags für das Issue angegeben werden:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#75715e">&lt;!-- TODO(MBrede): Die Grafik könnte mehr Farbe vertragen.
+</span><span style="color:#75715e">assignees: MBrede, vlerche
+</span><span style="color:#75715e">labels: ggplot2--&gt;</span>
+</code></pre></div><p>Kleinere Änderungen können natürlich direkt im file umgesetzt werden.
+Bei größeren Umformulierungsvorschlag ist ein Beispiel im Kommentar aber eine einfachere Option, auch wenn einzelne vorgeschlagene Änderungen ausgewählt werden können.</p>
+<p>Nach Durchgehen eines Files müssen die Änderungen ins repo zurückgespielt werden.
+Dazu einmal über die Github-GUI Committen mit einer möglichst beschreibenden Änderungszusammenfassung und über die Schaltfläche oben rechts Pushen.</p>
+<p>Die TODO to Issue Action erstellt automatisch ein neues Issue für jeden Kommentar. Issues werden mit den entsprechenden Labels versehen, die in der .github/workflows/TODO.yml-Datei definiert und im Kommentar angegeben sind.</p>
+<p>Wenn ein Issue erstellt wurde, kann das Issue diskutiert, bearbeitet und geschlossen werden, sobald es gelöst ist.
+Bei Entfernen des Kommentars wird das Issue auch direkt als geschlossen markiert.</p>
+<h3 id="pushpull-workflow">Push/Pull-Workflow</h3>
+<p>Um Überblick über die Änderungshistorie zu behalten und die aktuellste Version von gerade in Bearbeitung befindlichen Abschnitten zu trennen, bietet GitHub den Pull-Request-Workflow:</p>
+<ul>
+<li>Jeder Autor erstellt einen neuen Branch für seine Änderungen.</li>
+<li>Nachdem die Änderungen vorgenommen wurden, erstellt der Autor einen Pull Request.</li>
+<li>optional können andere Autoren auf Wunsch die Änderungen überprüfen und Feedback geben und abschließend Pull Request genehmigen.</li>
+<li>Beim Erstellen des Pull-Requests kann ein Co-Autor getagged und damit benachrichtigt werden.</li>
+<li>Wenn alle Autoren (oder der/die Erst-Autor:in) mit den Änderungen einverstanden sind, wird der Pull Request in den Haupt-Branch gemerged.</li>
+</ul>
+<h3 id="cherry-picking-und-blaming-von-änderungen">Cherry-Picking und Blaming von Änderungen</h3>
+<p>Im gemeinsamen Schreibprozess kann es hilfreich sein, bestimmte Änderungen aus einem Branch in einen anderen zu übernehmen oder herauszufinden, wer eine bestimmte Änderung vorgenommen hat. Hier sind zwei nützliche Funktionen, die dabei helfen: Cherry-Picking und Blaming.</p>
+<h4 id="cherry-picking">Cherry-Picking</h4>
+<p>Mit Cherry-Picking können gezielt einzelne Commits aus einem Branch in einen anderen übernommen werden. Dies ist besonders nützlich, wenn nur bestimmte Änderungen aus einem Branch genutzt werden sollen, ohne den gesamten Branch zu mergen. Die folgenden Schritte beschreiben, wie Cherry-Picking verwendet wird:</p>
+<ul>
+<li>
+<p>Zunächst muss sichergestellt werden, dass man sich auf dem gewünschten Ziel-Branch befindet, in den der Commit übernommen werden soll. Um den aktuellen Branch im Terminal zu überprüfen, kann der Befehl git branch verwendet werden. Der aktuelle Branch wird dabei mit einem Sternchen (*) gekennzeichnet.</p>
+</li>
+<li>
+<p>Sollte der aktuelle Branch nicht der gewünschte Ziel-Branch sein, kann man mit dem Befehl git checkout <!-- raw HTML omitted --> auf den richtigen Branch wechseln, wobei <!-- raw HTML omitted --> durch den tatsächlichen Namen des gewünschten Ziel-Branches ersetzt wird.</p>
+</li>
+<li>
+<p>Die Commit-ID des gewünschten Commits muss gefunden werden. Dies kann durch das Durchsuchen der Commit-Historie in GitHub Desktop oder auf der GitHub-Webseite erfolgen.</p>
+</li>
+<li>
+<p>Ein Terminal wird geöffnet und zum lokalen Repository navigiert.</p>
+</li>
+<li>
+<p>Der Befehl git cherry-pick <!-- raw HTML omitted --> wird ausgeführt, wobei <!-- raw HTML omitted --> durch die tatsächliche Commit-ID ersetzt wird. Dadurch wird der ausgewählte Commit in den aktuellen Branch übernommen.</p>
+</li>
+</ul>
+<p>Es ist auch möglich, nur bestimmte Änderungen aus einem Commit oder einem Branch zu übernehmen, ohne den gesamten Commit oder Branch zu übernehmen. Eine Möglichkeit besteht darin, git cherry-pick mit der Option -n (oder &ndash;no-commit) sowie git reset und git checkout zu verwenden:</p>
+<ul>
+<li>
+<p>Zunächst muss wieder sichergestellt werden, dass man sich auf dem gewünschten Ziel-Branch befindet, in den die Änderungen übernommen werden sollen. Um den aktuellen Branch im Terminal zu überprüfen, kann der Befehl git branch verwendet werden. Der aktuelle Branch wird dabei mit einem Sternchen (*) gekennzeichnet.</p>
+</li>
+<li>
+<p>Sollte der aktuelle Branch nicht der gewünschte Ziel-Branch sein, kann man mit dem Befehl git checkout <!-- raw HTML omitted --> auf den richtigen Branch wechseln, wobei <!-- raw HTML omitted --> durch den tatsächlichen Namen des gewünschten Ziel-Branches ersetzt wird.</p>
+</li>
+<li>
+<p>Die Commit-ID des gewünschten Commits muss gefunden werden. Dies kann durch das Durchsuchen der Commit-Historie in GitHub Desktop oder auf der GitHub-Webseite erfolgen.</p>
+</li>
+<li>
+<p>Der Befehl git cherry-pick -n <!-- raw HTML omitted --> wird ausgeführt, wobei <!-- raw HTML omitted --> durch die tatsächliche Commit-ID ersetzt wird. Dadurch werden die Änderungen aus dem ausgewählten Commit in den aktuellen Branch übernommen, aber noch nicht committet.</p>
+</li>
+<li>
+<p>Mit git checkout HEAD <!-- raw HTML omitted --> können nun gezielt Änderungen aus bestimmten Dateien rückgängig gemacht werden, wobei <!-- raw HTML omitted --> durch den tatsächlichen Dateinamen ersetzt wird. Dies entfernt die unerwünschten Änderungen aus dem Arbeitsverzeichnis und lässt nur die gewünschten Änderungen übrig.</p>
+</li>
+<li>
+<p>Schließlich kann git add <!-- raw HTML omitted --> verwendet werden, um die gewünschten Änderungen zum Commit vorzumerken, und git commit -m &ldquo;<!-- raw HTML omitted -->&rdquo; zum Erstellen eines neuen Commits mit diesen Änderungen, wobei <!-- raw HTML omitted --> durch den tatsächlichen Dateinamen und <!-- raw HTML omitted --> durch eine aussagekräftige Commit-Nachricht ersetzt wird.</p>
+</li>
+</ul>
+<h4 id="blaming">Blaming</h4>
+<p>Die Git-Blame-Funktion ermöglicht es, herauszufinden, wer eine bestimmte Änderung in einer Datei vorgenommen hat. Dies kann nützlich sein, um die Verantwortung für bestimmte Änderungen oder Entscheidungen im Text nachzuvollziehen. Die folgenden Schritte beschreiben, wie Blaming verwendet wird:</p>
+<ul>
+<li>
+<p>Auf der GitHub-Webseite navigiert man zum gewünschten Repository und öffnet die betreffende Datei.</p>
+</li>
+<li>
+<p>Klickt man auf die Schaltfläche &ldquo;Blame&rdquo; (zu finden oben rechts in der Dateiansicht), wird eine Ansicht angezeigt, in der jede Zeile der Datei mit dem entsprechenden Autor und Commit gekennzeichnet ist.</p>
+</li>
+<li>
+<p>In dieser Ansicht kann man nachverfolgen, wer welche Änderung vorgenommen hat und wann dies geschah. Bei Bedarf kann man auf den Commit-Link klicken, um weitere Informationen zum Commit und dessen Kontext zu erhalten.</p>
+</li>
+</ul>
+<p>Dieser Prozess stellt sicher, dass alle Änderungen sorgfältig überprüft werden und hilft, Konflikte und Fehler zu vermeiden.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>ab hier wird mit Quarto beides gemeint, solange nicht anders angemerkt&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Geht auch mit Gitlab, hier wird aber keine Action zur Erstellung von Issues angeboten, was das Kommentieren von Manuskripten etwas anders gestaltet&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/rmarkdown/">Rmarkdown</a>
+  
+  <a class="badge badge-light" href="/tags/r/">R</a>
+  
+  <a class="badge badge-light" href="/tags/academia/">Academia</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://max-bre.de">Max Brede</a></h5>
+      <h6 class="card-subtitle">KI-Projektmanager - FuE FH Kiel GmbH | Wissenschaftlicher Mitarbeiter CAU zu Kiel</h6>
+      
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://twitter.com/BredeMax" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://scholar.google.com/citations?user=yaaU4SoAAAAJ" target="_blank" rel="noopener">
+              <i class="ai ai-google-scholar"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/MBrede" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.linkedin.com/in/max-brede-a12237191/" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Ähnliches</h3>
+        <ul>
+          
+          <li><a href="/shiny/crossref/">Crossref-Citations</a></li>
+          
+          <li><a href="/skripte/edvi/">EDV I</a></li>
+          
+          <li><a href="/skripte/edvii/">EDV II</a></li>
+          
+          <li><a href="/shiny/edv2/">EDV2 - Demos</a></li>
+          
+          <li><a href="/shiny/korrelationshypothesen/">Korrelationshypothesen</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academia.min.e40e230d9b3dfeac86994156b6388764.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        
+        <p class="powered-by">
+          <a href="/privacy/">Impressum und Datenschutzerklärung</a>
+        </p>
+        
+        <p class="mb-0">
+          Copyright © 2023 &middot; 
+          This site was based on the <a href="https://github.com/themefisher/academia-hugo"target="_blank" rel="noopener">Hugo Academia-Theme</a> and built with <a href="https://cran.r-project.org/"target="_blank" rel="noopener">R</a> and <a href="https://bookdown.org/yihui/blogdown/"target="_blank" rel="noopener">Blogdown</a>.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-inline network-icon text-right mb-0">
+          
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Zitieren</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Kopie
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

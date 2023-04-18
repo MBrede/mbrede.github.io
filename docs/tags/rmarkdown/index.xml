@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rmarkdown on Max Brede</title>
+    <link>https://max-bre.de/tags/rmarkdown/</link>
+    <description>Recent content in Rmarkdown on Max Brede</description>
+    <generator>Source Themes academia (https://sourcethemes.com/academic/)</generator>
+    <language>de-de</language>
+    <copyright>Copyright &amp;copy; {year}</copyright>
+    <lastBuildDate>Tue, 07 Mar 2023 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://max-bre.de/tags/rmarkdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Akademisches Schreiben mit Github und Quarto</title>
+      <link>https://max-bre.de/blog/academic_collaboration_using_markdown_github/</link>
+      <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/blog/academic_collaboration_using_markdown_github/</guid>
+      <description>&lt;p&gt;&lt;code&gt;git&lt;/code&gt; und die darauf basierenden Hosting-Services Github und Gitlab sind Tools zur Versionskontrolle, die im Entwicklungskontext den De-Facto Industriestandard darstellen.
+Der Grund für diesen Erfolg ist dabei die Baum-artige Struktur in der Änderungen am Code-Stamm getracked und nachvollzogen werden können.
+Über verschiedene &amp;ldquo;branches&amp;rdquo; können außerdem Änderungen gebaut, erweitert und getestet werden, bevor sie in den zentralen Codestamm (bei Github der &amp;ldquo;main&amp;rdquo;-branch) &amp;ldquo;gemerged&amp;rdquo; werden.
+Dabei ist es generell möglich, Änderungen in allen möglichen Dateiformaten zu tracken, so richtig sinnvoll sind Änderungen und Änderungsabschnitte aber vor allem in Klartextformaten ohne Serialisierung verständlich.
+Textfiles müssen aber ja nicht notwendigerweise nur Code enthalten.
+Mit der wachsenden Beliebtheit von Rmarkdown und neuerdings Quarto geht (zumindest in der R-Community) der Trend zum Verfassen von Texten in auf markdown basierenden Formaten, die mit Hilfe von Pandoc in andere Formate kompiliert werden können.
+Da diese Formate in einfachen Textfiles abgespeichert werden, können so die Vorteile von git zum Tragen kommen.
+Ein workflow zum gemeinsamen Erstellen von Texten wie er zum Beispiel beim Schreiben gemeinsamer Publikationen nötig ist, gestützt auf eins der populären markdown Formate und git, könnte eine echte Alternative zur Co-Autorenschaft in Word sein.
+Dabei hat der vorgeschlagene Workflow die folgenden Vorteile:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Quarto/Rmarkdown&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; haben auch ohne Kombination mit git Vorteile beim Erstellen und Einbinden von Grafiken, Tabellen und statistischen Ergebnissen&lt;/li&gt;
+&lt;li&gt;mit git kommt ein Versionsmanagement dazu, dass Änderungen verfolgbar und auch zurückziehbar macht, ohne dass die Festplatte voll von &lt;code&gt;manuskript_final_v1_v3.docx&lt;/code&gt; etc. wird&lt;/li&gt;
+&lt;li&gt;die gesamte Änderungsgeschichte ließe sich publizieren, was aus Gesichtspunkten offener Wissenschaft attraktiv sein kann. Muss aber nicht.&lt;/li&gt;
+&lt;li&gt;mit Github/Gitlab Issues kommt ein ganzer Stack an Projektmanagement-Tools dazu, der optional genutzt werden kann&lt;/li&gt;
+&lt;li&gt;mit Github/Gitlab Action lassen sich Tests und Updates vor oder beim Commit automatisieren&lt;/li&gt;
+&lt;li&gt;das Zusammenarbeiten über Betriebssystem-Grenzen hinweg ist problemlos. Kein Ärger mehr mit verschiedenen Office-Versionen oder Formatierungskonflikten zwischen MS Office und Open Scource Lösungen&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Dabei sind die Nachteile relativ gering - Quarto ist sehr weit gekommen und unterstützt alle Standard-Anforderungen an akademische Arbeiten - Zitieren, Formatieren und das Nutzen von Latex-Templates ist kein Problem.
+Dazu kommt dass zumindest bei der Nutzung von RStudio seit kurzem auch eine WYSIWYG-Lösung zur Texteditirung dazugekommen ist - die Bedienung des Visual Editors sollte Leuten, die an Word gewöhnt sind, keine so große Herausforderunge mehr bereiten wie das Schreiben in reinem &lt;code&gt;markdown&lt;/code&gt;.
+Der einzige größere Nachteil ist, dass sich der Ablauf zum Kommentieren ändert - dazu kommen wir aber später.&lt;/p&gt;
+&lt;h3 id=&#34;einrichtung&#34;&gt;Einrichtung&lt;/h3&gt;
+&lt;p&gt;Unter Mac und Unix-Distros ist git vorinstalliert, unter Windows muss der Client noch installiert werden:
+&lt;a href=&#34;https://git-scm.com/download/win&#34;&gt;Download git&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Um Änderungen darzustellen gibt es zwar auch Funktionalität in RStudio, die github Desktop-GUI ist aber auch ganz schick:
+&lt;a href=&#34;https://desktop.github.com/&#34;&gt;Download github Desktop&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Rstudio als IDE bietet sich an, hier wird aber davon ausgegangen, dass die Installation bereits passiert ist.
+Außerdem ist zum Einbinden von Zitationen in Quarto-Texten eine Zotero-Installation mit dem &lt;a href=&#34;https://retorque.re/zotero-better-bibtex/&#34;&gt;Better Bibtex&lt;/a&gt; Addon zu empfehlen.
+Im visuellen Editor gibt es einen eigenständigen Zitationsmanger mit Zotero-Connection, im Source-Editor habe ich aber bessere Erfahrungen mit dem &lt;code&gt;citr&lt;/code&gt;-Paket gemacht, das es leider nicht mehr auf Cran aber noch auf &lt;a href=&#34;https://github.com/crsh/citr&#34;&gt;github&lt;/a&gt; gibt.
+Zum Schreiben mit Rmarkdown oder der Erweiterung Bookdwon braucht es nur die entsprechenden R-Pakete, für Quarto is nocht eine eigenständige Quarto-Installation nötig. Die ist &lt;a href=&#34;https://quarto.org/docs/get-started/&#34;&gt;hier&lt;/a&gt; zu finden.&lt;/p&gt;
+&lt;p&gt;Zuletzt wird ein Github-Repo&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; benötigt.&lt;/p&gt;
+&lt;p&gt;Zur Einrichtung braucht es erst einen Github-Account, der Rest kann über die Github-Desktop-GUI erledigt werden.
+Nach der Anmeldung in der GUI kann dafür einfach wie in &lt;a href=&#34;#fig-CreateRepo&#34;&gt;Figure 1&lt;/a&gt; zu sehen auf &lt;code&gt;File -&amp;gt; New repository&lt;/code&gt; geklickt oder &lt;code&gt;Strg + N&lt;/code&gt; gedrückt werden.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Im sich daraufhin öffnenden Dialog (&lt;a href=&#34;#fig-repoDialogue&#34;&gt;Figure 2&lt;/a&gt;) kann das zu erstellende Repo eingerichtet werden.
+Neben Name, Beschreibung und lokalem Speicherort kann hier auch eine Lizenz und ein gitignore-Vorbild angegeben werden.
+Das gitignore-File gibt an, welche Dateien grundsätzlich nicht ins Repo aufgenommen werden sollen - für Projekte wie hier beschrieben bietet sich hier das R-Template an.
+Außerdem&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Nach der lokalen Erstellung muss das Repo noch mit einem Github-remote verknüpft werden. Das kann einfach mit &amp;ldquo;Publish Repository&amp;rdquo; (&lt;a href=&#34;#fig-publishRepo&#34;&gt;Figure 3&lt;/a&gt;) geschehen, solange noch kein Repo mit dem entsprechenden Namen existiert.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Wenn sich nun in Github Web angemeldet wird, müsste das neue repository in der Liste auftauchen.
+Nach der o.g. Erstellung können im Repo unter den Einstellungen -&amp;gt; Collaborators noch Coautoren eingeladen werden.&lt;/p&gt;
+&lt;p&gt;Als Vorbereitung des Erstellens von Issues für Kommentare kann dem Repo noch die &lt;a href=&#34;https://github.com/marketplace/actions/todo-to-issue&#34;&gt;TODO to Issue Action&lt;/a&gt; hinzugefügt werden. Diese legt automatisch Issues an, wenn in einem Textfile ein TODO-Kommentar angelegt ist.
+Zum Einbinden in das Repo muss im Repo ein Ordner namens &lt;code&gt;.github&lt;/code&gt; und darin einer namens &lt;code&gt;workflows&lt;/code&gt; angelegt werden.
+In diesem &lt;code&gt;workflows&lt;/code&gt;-Ordner wird dann ein YAML file mit dem Namen &lt;code&gt;TODO.yml&lt;/code&gt; angelegt, das den folgenden Inhalt enthält:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Run TODO to Issue&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;on&lt;/span&gt;: [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;push&amp;#34;&lt;/span&gt;]
+&lt;span style=&#34;color:#f92672&#34;&gt;jobs&lt;/span&gt;:
+    &lt;span style=&#34;color:#f92672&#34;&gt;build&lt;/span&gt;:
+        &lt;span style=&#34;color:#f92672&#34;&gt;runs-on&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ubuntu-latest&amp;#34;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;steps&lt;/span&gt;:
+            - &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;actions/checkout@v3&amp;#34;&lt;/span&gt;
+            - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;TODO to Issue&amp;#34;&lt;/span&gt;
+              &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;alstr/todo-to-issue-action@v4&amp;#34;&lt;/span&gt;
+              &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:
+                &lt;span style=&#34;color:#f92672&#34;&gt;AUTO_ASSIGN&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;#Ersteller zuweisen wenn nicht anders angegeben&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;IDENTIFIERS&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;[{&amp;#34;name&amp;#34;: &amp;#34;COMMENT&amp;#34;, &amp;#34;labels&amp;#34;: [&amp;#34;comment&amp;#34;]}, {&amp;#34;name&amp;#34;: &amp;#34;SUGGESTION&amp;#34;, &amp;#34;labels&amp;#34;: [&amp;#34;suggestion&amp;#34;]}]&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# Liste mit Standard-Issue-Tags&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Damit die Action läuft muss die Änderung noch ins Repo gepushed werden. Dazu einmal in Github Dektop committen (&lt;a href=&#34;#fig-commit&#34;&gt;Figure 4&lt;/a&gt;) und dann pushen (&lt;a href=&#34;#fig-push&#34;&gt;Figure 5&lt;/a&gt;).&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;schreiben&#34;&gt;Schreiben&lt;/h2&gt;
+&lt;p&gt;Um einen Artikel zu schreiben bietet sich an, entweder bookdown oder quarto zu nutzen. Beide unterstützen das Schreiben eines Übergeordneten Dokuments in einer Reihe von anderen Dokumenten, zum Beispiel aufgesplittet nach Kapiteln.
+Das Aufteilen ist nicht unbedingt nötig, kann aber das Zusammenarbeiten vereinfachen.&lt;/p&gt;
+&lt;p&gt;Das Arbeiten mit einem Quarto-Stack hat außerdem den Vorteil, dass Auswertung, Poster, Paper und Präsentation in einem Abwasch erledigt werden können und alles an einer Stelle gesammelt vorliegt.&lt;/p&gt;
+&lt;p&gt;Ein &lt;code&gt;_quarto.yml&lt;/code&gt;, das Zweck genutzt wird, könnte wie folgt aussehen:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;project&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+  output&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;dir&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; _output
+  render&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; _quarto&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;paper.qmd
+
+toc&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; false
+number&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;sections&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; false
+bibliography&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; references.bib
+csl&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; _quarto&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;apa.csl
+
+title&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; Testartikel
+
+format&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+  html&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    theme&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; cosmo
+  pdf&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    documentclass&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; scrreprt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Der Text kann dann einfach in den einzelnen Textfiles runter geschrieben werden. Wenn mehrere Kapitel in einem Dokument eingebunden werden sollen, kann die &lt;a href=&#34;https://quarto.org/docs/authoring/includes.html&#34;&gt;includes&lt;/a&gt;-Syntax von Quarto genutzt werden.
+Der Ordner mit den Quarto-Files wurde in diesem Beispiel mit einem Unterstrich eingeleitet, damit beim Rendern nicht automatisch für jedes File ein Output generiert wird.&lt;/p&gt;
+&lt;h3 id=&#34;formatierung-in-quarto&#34;&gt;Formatierung in Quarto&lt;/h3&gt;
+&lt;p&gt;Quarto bietet vielfältige Formatierungsoptionen, um das Aussehen von Texten und Grafiken anzupassen. Die &lt;a href=&#34;https://quarto.org/docs/reference/&#34;&gt;offizielle Dokumentation&lt;/a&gt; enthält ausführliche Informationen und Beispiele zur Formatierung für verschiedene Output-Formate.&lt;/p&gt;
+&lt;p&gt;Tabellen und Grafiken können außerdem direkt in R oder Python Codechunks erstellt und eingebunden werden, Beispiele für gute Pakete zur Formatierung von Tabellen in R sind &lt;a href=&#34;https://hughjonesd.github.io/huxtable/huxtable.html&#34;&gt;huxtable&lt;/a&gt; und &lt;a href=&#34;https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html&#34;&gt;kableExtra&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Für Grafiken führt in R natürlich kein Weg an &lt;a href=&#34;https://ggplot2.tidyverse.org/&#34;&gt;ggplot&lt;/a&gt; vorbei, für Python ist &lt;a href=&#34;https://seaborn.pydata.org/&#34;&gt;seaborn&lt;/a&gt; eine gute Anlaufstelle.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://quarto.org/docs/authoring/figures.html#figure-basics&#34;&gt;Grafiken&lt;/a&gt; und &lt;a href=&#34;https://quarto.org/docs/authoring/tables.html&#34;&gt;Tabellen&lt;/a&gt; können dann über die Chunk-Optionen in Quarto beschriftet werden und über die in der &lt;a href=&#34;https://quarto.org/docs/authoring/figures.html#cross-references&#34;&gt;Dokumentation&lt;/a&gt; beschriebenen Syntax Cross-referenziert werden. Mögliche Chunk-Optionen sind in der &lt;a href=&#34;https://quarto.org/docs/reference/cells/cells-knitr.html&#34;&gt;knitr-Referenz&lt;/a&gt; aufgelistet.&lt;/p&gt;
+&lt;h3 id=&#34;zitate-in-quarto&#34;&gt;Zitate in Quarto&lt;/h3&gt;
+&lt;p&gt;Zotero bietet in Kombination mit dem citr-Paket und Better BibTeX eine hervorragende Möglichkeit, Literaturverweise in Quarto-Dokumenten zu verwalten. Nach der Installation von Zotero und Better BibTeX kann entweder direkt über citr auf die Zotero Bibliothek (siehe die &lt;a href=&#34;(https://github.com/crsh/citr)&#34;&gt;citr-Dokumentation&lt;/a&gt; oder auf ein aus Zotero exportiertes .bib-file zugegriffen werden. Im Quarto-Dokument kann dann auf Referenzen verwiesen werden, indem der folgende Passus in den _quarto.yml YAML-Header eingefügt wird:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;bibliography&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; references.bib
+csl&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; quarto&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;apa.csl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Über Addins -&amp;gt; CITR Insert citation kann die jeweilige Bibliothek durchsucht und die Referenz eingefügt werden. Wenn aus der Zotero-Bibliothek referenziert wird, wird das &lt;code&gt;references.bib&lt;/code&gt;-File automatisch ergänzt. Beim Rendern des Dokuments wird die Literatursammlung im unter cls im header angegebenen Format automatisch am Ende des Dokuments oder an der mit dem folgenden Inhalt angegebenen Stelle eingefügt:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-quarto&#34; data-lang=&#34;quarto&#34;&gt;::: {#refs}
+:::
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;format-vorlagen-auf-quarto-dokumente-anwenden&#34;&gt;Format-Vorlagen auf Quarto-Dokumente anwenden&lt;/h3&gt;
+&lt;p&gt;Quarto unterstützt die Verwendung von Format-Vorlagen, um das Design von Dokumenten anzupassen. Um z.B. eine LaTeX-Vorlage (wie zum Beispiel von einem Journal ausgegeben) auf ein Quarto-Dokument anzuwenden, müssen die folgenden Zeilen in den YAML-Header des Quarto-Dokuments eingefügt werden:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;format&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+  pdf&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    documentclass&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; my&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;template
+    includes&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+      in_header&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; my&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;template.tex
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Weitere Informationen zum Anpassen von PDF-Dokumenten mit Quarto- und LaTeX-Vorlagen sind in der &lt;a href=&#34;https://quarto.org/docs/journals/templates.html&#34;&gt;Quarto-Dokumentation&lt;/a&gt; zu finden.&lt;/p&gt;
+&lt;h2 id=&#34;zusammenarbeit&#34;&gt;Zusammenarbeit&lt;/h2&gt;
+&lt;h3 id=&#34;kommentieren&#34;&gt;Kommentieren&lt;/h3&gt;
+&lt;p&gt;Dank der &lt;a href=&#34;https://github.com/marketplace/actions/todo-to-issue&#34;&gt;TODO to Issue Action&lt;/a&gt; werden Inline-Kommentare in den Quarto- oder R Markdown-Dateien direkt in GitHub Issues umgewandelt. Dies ist besonders nützlich, um Feedback oder Anmerkungen während des Schreibprozesses zu geben und vor allem Anmerkungen direkt diskutieren zu können.
+Um dieses Feature zu nutzen, müssen Kommentare zu einem Textabschnitt wie folgt direkt in das qmd-file geschrieben werden:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Kommentare sollten mit TODO, COMMENT oder SUGGESTION beginnen und können in HTML- oder R-Kommentaren platziert werden. Hinter die Anmerkungsart muss in Klammern der github-tag des Kommentar-Autors genannt werden. Ein Kommentar könnte zum Beispiel so aussehen:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- TODO(MBrede): Die Grafik könnte mehr Farbe vertragen.--&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Mit &amp;ldquo;assignees:&amp;rdquo; kann eine Liste von Projektmitarbeitern angegeben werdne, die im Issue eingebunden und damit per Mail informiert werden soll:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- TODO(MBrede): Die Grafik könnte mehr Farbe vertragen.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;assignees: MBrede, vlerche--&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Mit &amp;ldquo;labels:&amp;rdquo; können außerdem direkt Tags für das Issue angegeben werden:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- TODO(MBrede): Die Grafik könnte mehr Farbe vertragen.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;assignees: MBrede, vlerche
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;labels: ggplot2--&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Kleinere Änderungen können natürlich direkt im file umgesetzt werden.
+Bei größeren Umformulierungsvorschlag ist ein Beispiel im Kommentar aber eine einfachere Option, auch wenn einzelne vorgeschlagene Änderungen ausgewählt werden können.&lt;/p&gt;
+&lt;p&gt;Nach Durchgehen eines Files müssen die Änderungen ins repo zurückgespielt werden.
+Dazu einmal über die Github-GUI Committen mit einer möglichst beschreibenden Änderungszusammenfassung und über die Schaltfläche oben rechts Pushen.&lt;/p&gt;
+&lt;p&gt;Die TODO to Issue Action erstellt automatisch ein neues Issue für jeden Kommentar. Issues werden mit den entsprechenden Labels versehen, die in der .github/workflows/TODO.yml-Datei definiert und im Kommentar angegeben sind.&lt;/p&gt;
+&lt;p&gt;Wenn ein Issue erstellt wurde, kann das Issue diskutiert, bearbeitet und geschlossen werden, sobald es gelöst ist.
+Bei Entfernen des Kommentars wird das Issue auch direkt als geschlossen markiert.&lt;/p&gt;
+&lt;h3 id=&#34;pushpull-workflow&#34;&gt;Push/Pull-Workflow&lt;/h3&gt;
+&lt;p&gt;Um Überblick über die Änderungshistorie zu behalten und die aktuellste Version von gerade in Bearbeitung befindlichen Abschnitten zu trennen, bietet GitHub den Pull-Request-Workflow:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Jeder Autor erstellt einen neuen Branch für seine Änderungen.&lt;/li&gt;
+&lt;li&gt;Nachdem die Änderungen vorgenommen wurden, erstellt der Autor einen Pull Request.&lt;/li&gt;
+&lt;li&gt;optional können andere Autoren auf Wunsch die Änderungen überprüfen und Feedback geben und abschließend Pull Request genehmigen.&lt;/li&gt;
+&lt;li&gt;Beim Erstellen des Pull-Requests kann ein Co-Autor getagged und damit benachrichtigt werden.&lt;/li&gt;
+&lt;li&gt;Wenn alle Autoren (oder der/die Erst-Autor:in) mit den Änderungen einverstanden sind, wird der Pull Request in den Haupt-Branch gemerged.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;cherry-picking-und-blaming-von-änderungen&#34;&gt;Cherry-Picking und Blaming von Änderungen&lt;/h3&gt;
+&lt;p&gt;Im gemeinsamen Schreibprozess kann es hilfreich sein, bestimmte Änderungen aus einem Branch in einen anderen zu übernehmen oder herauszufinden, wer eine bestimmte Änderung vorgenommen hat. Hier sind zwei nützliche Funktionen, die dabei helfen: Cherry-Picking und Blaming.&lt;/p&gt;
+&lt;h4 id=&#34;cherry-picking&#34;&gt;Cherry-Picking&lt;/h4&gt;
+&lt;p&gt;Mit Cherry-Picking können gezielt einzelne Commits aus einem Branch in einen anderen übernommen werden. Dies ist besonders nützlich, wenn nur bestimmte Änderungen aus einem Branch genutzt werden sollen, ohne den gesamten Branch zu mergen. Die folgenden Schritte beschreiben, wie Cherry-Picking verwendet wird:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Zunächst muss sichergestellt werden, dass man sich auf dem gewünschten Ziel-Branch befindet, in den der Commit übernommen werden soll. Um den aktuellen Branch im Terminal zu überprüfen, kann der Befehl git branch verwendet werden. Der aktuelle Branch wird dabei mit einem Sternchen (*) gekennzeichnet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sollte der aktuelle Branch nicht der gewünschte Ziel-Branch sein, kann man mit dem Befehl git checkout &lt;!-- raw HTML omitted --&gt; auf den richtigen Branch wechseln, wobei &lt;!-- raw HTML omitted --&gt; durch den tatsächlichen Namen des gewünschten Ziel-Branches ersetzt wird.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Die Commit-ID des gewünschten Commits muss gefunden werden. Dies kann durch das Durchsuchen der Commit-Historie in GitHub Desktop oder auf der GitHub-Webseite erfolgen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ein Terminal wird geöffnet und zum lokalen Repository navigiert.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Der Befehl git cherry-pick &lt;!-- raw HTML omitted --&gt; wird ausgeführt, wobei &lt;!-- raw HTML omitted --&gt; durch die tatsächliche Commit-ID ersetzt wird. Dadurch wird der ausgewählte Commit in den aktuellen Branch übernommen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Es ist auch möglich, nur bestimmte Änderungen aus einem Commit oder einem Branch zu übernehmen, ohne den gesamten Commit oder Branch zu übernehmen. Eine Möglichkeit besteht darin, git cherry-pick mit der Option -n (oder &amp;ndash;no-commit) sowie git reset und git checkout zu verwenden:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Zunächst muss wieder sichergestellt werden, dass man sich auf dem gewünschten Ziel-Branch befindet, in den die Änderungen übernommen werden sollen. Um den aktuellen Branch im Terminal zu überprüfen, kann der Befehl git branch verwendet werden. Der aktuelle Branch wird dabei mit einem Sternchen (*) gekennzeichnet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sollte der aktuelle Branch nicht der gewünschte Ziel-Branch sein, kann man mit dem Befehl git checkout &lt;!-- raw HTML omitted --&gt; auf den richtigen Branch wechseln, wobei &lt;!-- raw HTML omitted --&gt; durch den tatsächlichen Namen des gewünschten Ziel-Branches ersetzt wird.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Die Commit-ID des gewünschten Commits muss gefunden werden. Dies kann durch das Durchsuchen der Commit-Historie in GitHub Desktop oder auf der GitHub-Webseite erfolgen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Der Befehl git cherry-pick -n &lt;!-- raw HTML omitted --&gt; wird ausgeführt, wobei &lt;!-- raw HTML omitted --&gt; durch die tatsächliche Commit-ID ersetzt wird. Dadurch werden die Änderungen aus dem ausgewählten Commit in den aktuellen Branch übernommen, aber noch nicht committet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mit git checkout HEAD &lt;!-- raw HTML omitted --&gt; können nun gezielt Änderungen aus bestimmten Dateien rückgängig gemacht werden, wobei &lt;!-- raw HTML omitted --&gt; durch den tatsächlichen Dateinamen ersetzt wird. Dies entfernt die unerwünschten Änderungen aus dem Arbeitsverzeichnis und lässt nur die gewünschten Änderungen übrig.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Schließlich kann git add &lt;!-- raw HTML omitted --&gt; verwendet werden, um die gewünschten Änderungen zum Commit vorzumerken, und git commit -m &amp;ldquo;&lt;!-- raw HTML omitted --&gt;&amp;rdquo; zum Erstellen eines neuen Commits mit diesen Änderungen, wobei &lt;!-- raw HTML omitted --&gt; durch den tatsächlichen Dateinamen und &lt;!-- raw HTML omitted --&gt; durch eine aussagekräftige Commit-Nachricht ersetzt wird.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;blaming&#34;&gt;Blaming&lt;/h4&gt;
+&lt;p&gt;Die Git-Blame-Funktion ermöglicht es, herauszufinden, wer eine bestimmte Änderung in einer Datei vorgenommen hat. Dies kann nützlich sein, um die Verantwortung für bestimmte Änderungen oder Entscheidungen im Text nachzuvollziehen. Die folgenden Schritte beschreiben, wie Blaming verwendet wird:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Auf der GitHub-Webseite navigiert man zum gewünschten Repository und öffnet die betreffende Datei.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Klickt man auf die Schaltfläche &amp;ldquo;Blame&amp;rdquo; (zu finden oben rechts in der Dateiansicht), wird eine Ansicht angezeigt, in der jede Zeile der Datei mit dem entsprechenden Autor und Commit gekennzeichnet ist.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In dieser Ansicht kann man nachverfolgen, wer welche Änderung vorgenommen hat und wann dies geschah. Bei Bedarf kann man auf den Commit-Link klicken, um weitere Informationen zum Commit und dessen Kontext zu erhalten.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Dieser Prozess stellt sicher, dass alle Änderungen sorgfältig überprüft werden und hilft, Konflikte und Fehler zu vermeiden.&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;ab hier wird mit Quarto beides gemeint, solange nicht anders angemerkt&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Geht auch mit Gitlab, hier wird aber keine Action zur Erstellung von Issues angeboten, was das Kommentieren von Manuskripten etwas anders gestaltet&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
