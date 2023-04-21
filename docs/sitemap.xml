@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://max-bre.de/tags/data-viz/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://max-bre.de/tags/data-wrangling/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://max-bre.de/skripte/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://max-bre.de/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://max-bre.de/tags/quarto/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://max-bre.de/tags/r/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://max-bre.de/tags/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://max-bre.de/skripte/thesisr/</loc>
+    <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://max-bre.de/tags/academia/</loc>
     <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
@@ -11,16 +35,7 @@
     <loc>https://max-bre.de/blog/</loc>
     <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://max-bre.de/</loc>
-    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/r/</loc>
-    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://max-bre.de/tags/rmarkdown/</loc>
-    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/</loc>
     <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://max-bre.de/shiny/crossref/</loc>
@@ -53,12 +68,6 @@
     <loc>https://max-bre.de/tags/raspberry-pi/</loc>
     <lastmod>2022-05-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://max-bre.de/tags/data-viz/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/tags/data-wrangling/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://max-bre.de/skripte/edvi/</loc>
     <lastmod>2022-01-09T00:00:00+00:00</lastmod>
   </url><url>
@@ -72,9 +81,6 @@
     <lastmod>2022-01-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://max-bre.de/shiny/korrelationshypothesen/</loc>
-    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://max-bre.de/skripte/</loc>
     <lastmod>2022-01-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://max-bre.de/skripte/assumptions/</loc>
