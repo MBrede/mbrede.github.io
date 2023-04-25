@@ -234,6 +234,10 @@
             </li>
             
             <li class="dropdown-item my-0 py-0 mx-0 px-0">
+              <a href="/skripte/thesisr"><span>Thesis in R</span></a>
+            </li>
+            
+            <li class="dropdown-item my-0 py-0 mx-0 px-0">
               <a href="/skripte/vplan"><span>Versuchsplanung</span></a>
             </li>
             
@@ -412,14 +416,23 @@ Zum Schreiben mit Rmarkdown oder der Erweiterung Bookdwon braucht es nur die ent
 <p>Zuletzt wird ein Github-Repo<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> benötigt.</p>
 <p>Zur Einrichtung braucht es erst einen Github-Account, der Rest kann über die Github-Desktop-GUI erledigt werden.
 Nach der Anmeldung in der GUI kann dafür einfach wie in <a href="#fig-CreateRepo">Figure 1</a> zu sehen auf <code>File -&gt; New repository</code> geklickt oder <code>Strg + N</code> gedrückt werden.</p>
-<!-- raw HTML omitted -->
+<figure>
+<img src="imgs/create_repo.png" id="fig-CreateRepo" alt="Figure 1: Repo erstellen" />
+<figcaption aria-hidden="true">Figure 1: Repo erstellen</figcaption>
+</figure>
 <p>Im sich daraufhin öffnenden Dialog (<a href="#fig-repoDialogue">Figure 2</a>) kann das zu erstellende Repo eingerichtet werden.
 Neben Name, Beschreibung und lokalem Speicherort kann hier auch eine Lizenz und ein gitignore-Vorbild angegeben werden.
 Das gitignore-File gibt an, welche Dateien grundsätzlich nicht ins Repo aufgenommen werden sollen - für Projekte wie hier beschrieben bietet sich hier das R-Template an.
 Außerdem</p>
-<!-- raw HTML omitted -->
+<figure>
+<img src="imgs/repo_dialogue.png" id="fig-repoDialogue" alt="Figure 2: Einstellungen bei Repoerstellung" />
+<figcaption aria-hidden="true">Figure 2: Einstellungen bei Repoerstellung</figcaption>
+</figure>
 <p>Nach der lokalen Erstellung muss das Repo noch mit einem Github-remote verknüpft werden. Das kann einfach mit &ldquo;Publish Repository&rdquo; (<a href="#fig-publishRepo">Figure 3</a>) geschehen, solange noch kein Repo mit dem entsprechenden Namen existiert.</p>
-<!-- raw HTML omitted -->
+<figure>
+<img src="imgs/publish_to_github.png" id="fig-publishRepo" alt="Figure 3: Erstellung des Github-Repos" />
+<figcaption aria-hidden="true">Figure 3: Erstellung des Github-Repos</figcaption>
+</figure>
 <p>Wenn sich nun in Github Web angemeldet wird, müsste das neue repository in der Liste auftauchen.
 Nach der o.g. Erstellung können im Repo unter den Einstellungen -&gt; Collaborators noch Coautoren eingeladen werden.</p>
 <p>Als Vorbereitung des Erstellens von Issues für Kommentare kann dem Repo noch die <a href="https://github.com/marketplace/actions/todo-to-issue">TODO to Issue Action</a> hinzugefügt werden. Diese legt automatisch Issues an, wenn in einem Textfile ein TODO-Kommentar angelegt ist.
@@ -438,8 +451,14 @@ In diesem <code>workflows</code>-Ordner wird dann ein YAML file mit dem Namen <c
                 <span style="color:#f92672">AUTO_ASSIGN</span>: <span style="color:#66d9ef">true</span> <span style="color:#75715e">#Ersteller zuweisen wenn nicht anders angegeben</span>
                 <span style="color:#f92672">IDENTIFIERS</span>: <span style="color:#e6db74">&#39;[{&#34;name&#34;: &#34;COMMENT&#34;, &#34;labels&#34;: [&#34;comment&#34;]}, {&#34;name&#34;: &#34;SUGGESTION&#34;, &#34;labels&#34;: [&#34;suggestion&#34;]}]&#39;</span> <span style="color:#75715e"># Liste mit Standard-Issue-Tags</span>
 </code></pre></div><p>Damit die Action läuft muss die Änderung noch ins Repo gepushed werden. Dazu einmal in Github Dektop committen (<a href="#fig-commit">Figure 4</a>) und dann pushen (<a href="#fig-push">Figure 5</a>).</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<figure>
+<img src="imgs/commit.png" id="fig-commit" alt="Figure 4: Änderungen Committen" />
+<figcaption aria-hidden="true">Figure 4: Änderungen Committen</figcaption>
+</figure>
+<figure>
+<img src="imgs/push.png" id="fig-push" alt="Figure 5: Änderungen Pushen" />
+<figcaption aria-hidden="true">Figure 5: Änderungen Pushen</figcaption>
+</figure>
 <h2 id="schreiben">Schreiben</h2>
 <p>Um einen Artikel zu schreiben bietet sich an, entweder bookdown oder quarto zu nutzen. Beide unterstützen das Schreiben eines Übergeordneten Dokuments in einer Reihe von anderen Dokumenten, zum Beispiel aufgesplittet nach Kapiteln.
 Das Aufteilen ist nicht unbedingt nötig, kann aber das Zusammenarbeiten vereinfachen.</p>
@@ -528,7 +547,7 @@ Bei Entfernen des Kommentars wird das Issue auch direkt als geschlossen markiert
 <p>Zunächst muss sichergestellt werden, dass man sich auf dem gewünschten Ziel-Branch befindet, in den der Commit übernommen werden soll. Um den aktuellen Branch im Terminal zu überprüfen, kann der Befehl git branch verwendet werden. Der aktuelle Branch wird dabei mit einem Sternchen (*) gekennzeichnet.</p>
 </li>
 <li>
-<p>Sollte der aktuelle Branch nicht der gewünschte Ziel-Branch sein, kann man mit dem Befehl git checkout <!-- raw HTML omitted --> auf den richtigen Branch wechseln, wobei <!-- raw HTML omitted --> durch den tatsächlichen Namen des gewünschten Ziel-Branches ersetzt wird.</p>
+<p>Sollte der aktuelle Branch nicht der gewünschte Ziel-Branch sein, kann man mit dem Befehl git checkout <ziel-branch> auf den richtigen Branch wechseln, wobei <ziel-branch> durch den tatsächlichen Namen des gewünschten Ziel-Branches ersetzt wird.</p>
 </li>
 <li>
 <p>Die Commit-ID des gewünschten Commits muss gefunden werden. Dies kann durch das Durchsuchen der Commit-Historie in GitHub Desktop oder auf der GitHub-Webseite erfolgen.</p>
@@ -537,7 +556,7 @@ Bei Entfernen des Kommentars wird das Issue auch direkt als geschlossen markiert
 <p>Ein Terminal wird geöffnet und zum lokalen Repository navigiert.</p>
 </li>
 <li>
-<p>Der Befehl git cherry-pick <!-- raw HTML omitted --> wird ausgeführt, wobei <!-- raw HTML omitted --> durch die tatsächliche Commit-ID ersetzt wird. Dadurch wird der ausgewählte Commit in den aktuellen Branch übernommen.</p>
+<p>Der Befehl git cherry-pick <commit-id> wird ausgeführt, wobei <commit-id> durch die tatsächliche Commit-ID ersetzt wird. Dadurch wird der ausgewählte Commit in den aktuellen Branch übernommen.</p>
 </li>
 </ul>
 <p>Es ist auch möglich, nur bestimmte Änderungen aus einem Commit oder einem Branch zu übernehmen, ohne den gesamten Commit oder Branch zu übernehmen. Eine Möglichkeit besteht darin, git cherry-pick mit der Option -n (oder &ndash;no-commit) sowie git reset und git checkout zu verwenden:</p>
@@ -546,19 +565,19 @@ Bei Entfernen des Kommentars wird das Issue auch direkt als geschlossen markiert
 <p>Zunächst muss wieder sichergestellt werden, dass man sich auf dem gewünschten Ziel-Branch befindet, in den die Änderungen übernommen werden sollen. Um den aktuellen Branch im Terminal zu überprüfen, kann der Befehl git branch verwendet werden. Der aktuelle Branch wird dabei mit einem Sternchen (*) gekennzeichnet.</p>
 </li>
 <li>
-<p>Sollte der aktuelle Branch nicht der gewünschte Ziel-Branch sein, kann man mit dem Befehl git checkout <!-- raw HTML omitted --> auf den richtigen Branch wechseln, wobei <!-- raw HTML omitted --> durch den tatsächlichen Namen des gewünschten Ziel-Branches ersetzt wird.</p>
+<p>Sollte der aktuelle Branch nicht der gewünschte Ziel-Branch sein, kann man mit dem Befehl git checkout <ziel-branch> auf den richtigen Branch wechseln, wobei <ziel-branch> durch den tatsächlichen Namen des gewünschten Ziel-Branches ersetzt wird.</p>
 </li>
 <li>
 <p>Die Commit-ID des gewünschten Commits muss gefunden werden. Dies kann durch das Durchsuchen der Commit-Historie in GitHub Desktop oder auf der GitHub-Webseite erfolgen.</p>
 </li>
 <li>
-<p>Der Befehl git cherry-pick -n <!-- raw HTML omitted --> wird ausgeführt, wobei <!-- raw HTML omitted --> durch die tatsächliche Commit-ID ersetzt wird. Dadurch werden die Änderungen aus dem ausgewählten Commit in den aktuellen Branch übernommen, aber noch nicht committet.</p>
+<p>Der Befehl git cherry-pick -n <commit-id> wird ausgeführt, wobei <commit-id> durch die tatsächliche Commit-ID ersetzt wird. Dadurch werden die Änderungen aus dem ausgewählten Commit in den aktuellen Branch übernommen, aber noch nicht committet.</p>
 </li>
 <li>
-<p>Mit git checkout HEAD <!-- raw HTML omitted --> können nun gezielt Änderungen aus bestimmten Dateien rückgängig gemacht werden, wobei <!-- raw HTML omitted --> durch den tatsächlichen Dateinamen ersetzt wird. Dies entfernt die unerwünschten Änderungen aus dem Arbeitsverzeichnis und lässt nur die gewünschten Änderungen übrig.</p>
+<p>Mit git checkout HEAD <datei> können nun gezielt Änderungen aus bestimmten Dateien rückgängig gemacht werden, wobei <datei> durch den tatsächlichen Dateinamen ersetzt wird. Dies entfernt die unerwünschten Änderungen aus dem Arbeitsverzeichnis und lässt nur die gewünschten Änderungen übrig.</p>
 </li>
 <li>
-<p>Schließlich kann git add <!-- raw HTML omitted --> verwendet werden, um die gewünschten Änderungen zum Commit vorzumerken, und git commit -m &ldquo;<!-- raw HTML omitted -->&rdquo; zum Erstellen eines neuen Commits mit diesen Änderungen, wobei <!-- raw HTML omitted --> durch den tatsächlichen Dateinamen und <!-- raw HTML omitted --> durch eine aussagekräftige Commit-Nachricht ersetzt wird.</p>
+<p>Schließlich kann git add <datei> verwendet werden, um die gewünschten Änderungen zum Commit vorzumerken, und git commit -m &ldquo;<commit-nachricht>&rdquo; zum Erstellen eines neuen Commits mit diesen Änderungen, wobei <datei> durch den tatsächlichen Dateinamen und <commit-nachricht> durch eine aussagekräftige Commit-Nachricht ersetzt wird.</p>
 </li>
 </ul>
 <h4 id="blaming">Blaming</h4>
@@ -593,7 +612,7 @@ Bei Entfernen des Kommentars wird das Issue auch direkt als geschlossen markiert
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="/tags/rmarkdown/">Rmarkdown</a>
+  <a class="badge badge-light" href="/tags/quarto/">Quarto</a>
   
   <a class="badge badge-light" href="/tags/r/">R</a>
   
