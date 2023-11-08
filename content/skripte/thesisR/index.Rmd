@@ -8,10 +8,8 @@ image:
   focal_point: Smart
 ---
 
-Das Skript bietet eine Sammlung an Tipps zu:
-
-1. Literaturrecherche - zum Suchen, Sammeln und Lesen von (psychologischen) Arbeiten
-2. Die Erstellung einer Thesis mit R - vom Einlesen von vielen Experimentellen Ergebnissen über die Erstellung von Grafiken und Tabellen zum Verfassen mit Quarto
+Das Skript bietet eine Sammlung an Tipps zu 1. der Literaturrecherche - zum Suchen, Sammeln und Lesen von (psychologischen) Arbeiten und 
+2. der Erstellung einer Thesis mit R - vom Einlesen von vielen Experimentellen Ergebnissen über die Erstellung von Grafiken und Tabellen zum Verfassen mit Quarto
 
 
 ```{r, echo=FALSE, results='asis', message=FALSE}
