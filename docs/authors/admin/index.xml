@@ -7,10 +7,27 @@
     <generator>Source Themes academia (https://sourcethemes.com/academic/)</generator>
     <language>de-de</language>
     <copyright>Copyright &amp;copy; {year}</copyright>
-    <lastBuildDate>Sat, 18 Dec 2021 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="https://max-bre.de/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>4. What drives researchers to look up research publications they found in the news?</title>
+      <link>https://max-bre.de/publication/2023_brede_whatdrivesresearchers/</link>
+      <pubDate>Mon, 09 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/publication/2023_brede_whatdrivesresearchers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The rhythm of teamwork: Discovering a complex temporal pattern of team processes.</title>
+      <link>https://max-bre.de/publication/2023_oldeweme_therhythmof/</link>
+      <pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/publication/2023_oldeweme_therhythmof/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Research articles promoted in embargo e-mails receive higher citations and altmetrics</title>
@@ -27,24 +44,6 @@
       <pubDate>Tue, 06 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://max-bre.de/publication/2021_lemke_exploringtherelationship/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>4. What drives researchers to look up research publications they found in the news?</title>
-      <link>https://max-bre.de/publication/2023_brede_whatdrivesresearchers/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-bre.de/publication/2023_brede_whatdrivesresearchers/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>The rhythm of teamwork: Discovering a complex temporal pattern of team processes.</title>
-      <link>https://max-bre.de/publication/2023_oldeweme_therhythmof/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-bre.de/publication/2023_oldeweme_therhythmof/</guid>
       <description></description>
     </item>
     

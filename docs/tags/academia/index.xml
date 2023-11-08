@@ -7,10 +7,30 @@
     <generator>Source Themes academia (https://sourcethemes.com/academic/)</generator>
     <language>de-de</language>
     <copyright>Copyright &amp;copy; {year}</copyright>
-    <lastBuildDate>Tue, 07 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Nov 2023 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="https://max-bre.de/tags/academia/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vorschläge zur Thesis-Bearbeitung</title>
+      <link>https://max-bre.de/skripte/thesisr/</link>
+      <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/skripte/thesisr/</guid>
+      <description>
+
+
+&lt;p&gt;Das Skript bietet eine Sammlung an Tipps zu:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Literaturrecherche - zum Suchen, Sammeln und Lesen von (psychologischen) Arbeiten&lt;/li&gt;
+&lt;li&gt;Die Erstellung einer Thesis mit R - vom Einlesen von vielen Experimentellen Ergebnissen über die Erstellung von Grafiken und Tabellen zum Verfassen mit Quarto&lt;/li&gt;
+&lt;/ol&gt;
+&lt;iframe width=&#34;90%&#34; height=&#34;500&#34; name=&#34;iframe&#34; src=&#34;https://mbrede.github.io/r_thesis_tools/&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;Sollte die Darstellung nicht richtig funktionieren, kann das Skript/die App auch &lt;a href=&#34;https://mbrede.github.io/r_thesis_tools/&#34;&gt;hier&lt;/a&gt; gefunden werden.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Akademisches Schreiben mit Github und Quarto</title>
