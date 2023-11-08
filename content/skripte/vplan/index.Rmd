@@ -1,0 +1,21 @@
+---
+title: "Versuchsplanung"
+date: "2022-01-09"
+tags: ['Experimentieren']
+
+image:
+  caption: Abb. aus Skript
+  focal_point: Smart
+---
+
+Das Skript zur Versuchsplanung ist im Rahmen meiner Seminare zur Versuchsplanung an der CAU zu Kiel entstanden, die ich in den Semestern SS17 (2x), WS17/18 (5x), WS18/19 (5x), WS19/20 und WS20/21 an der CAU zu Kiel gegeben habe.
+Im auf Studienanfänger ausgelegten Skript geht es um alle Schritte zur Planung eines psychologischen Experiments.
+
+```{r, echo=FALSE, results='asis', message=FALSE}
+#| echo=FALSE,
+#| results='asis'
+
+run_script <- F
+source('../../../R/build.R')
+build_iframe('https://mbrede.github.io/CAU_KIEL_Versuchsplanung/')
+```

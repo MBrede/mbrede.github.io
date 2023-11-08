@@ -1,0 +1,24 @@
+---
+title: "Vorschläge zur Thesis-Bearbeitung"
+date: "2023-11-08"
+tags: ['Academia', 'Crossref', 'Literaturrecherche', 'R', 'Quarto', 'Data Wrangling', 'Data Viz']
+
+image:
+  caption: Pinguin bei der Datenanalyse, erstellt mit Midjourney
+  focal_point: Smart
+---
+
+Das Skript bietet eine Sammlung an Tipps zu:
+
+1. Literaturrecherche - zum Suchen, Sammeln und Lesen von (psychologischen) Arbeiten
+2. Die Erstellung einer Thesis mit R - vom Einlesen von vielen Experimentellen Ergebnissen über die Erstellung von Grafiken und Tabellen zum Verfassen mit Quarto
+
+
+```{r, echo=FALSE, results='asis', message=FALSE}
+#| echo=FALSE,
+#| results='asis'
+
+run_script <- F
+source('../../../R/build.R')
+build_iframe('https://mbrede.github.io/r_thesis_tools/')
+```

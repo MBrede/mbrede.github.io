@@ -1,0 +1,21 @@
+---
+title: "Reinforcement-Roboter"
+date: "2022-01-09"
+tags: ['R', 'Shiny', 'Programmieren']
+
+image:
+  caption: Abb. aus App
+  focal_point: Smart
+---
+
+Eine sehr, sehr basale Demo zur Darstellung des Grundprinzips von Reinforcement Learning. Die App lässt einen "Roboter" einen Pfad zum Ziel lernen, indem in einem Koordinatensystem Felder mit Gewichten versehen werden, die bedeuten, wie hilfreich ein Weg zum Finden des Ziels war.
+
+```{r, echo=FALSE, results='asis', message=FALSE}
+#| echo=FALSE,
+#| results='asis'
+#| 
+run_script <- F
+source('../../../R/build.R')
+build_iframe('https://maxteflon.shinyapps.io/reinforced_robot/')
+```
+

@@ -1,0 +1,21 @@
+---
+title: "Korrelationshypothesen"
+date: "2022-01-09"
+tags: ['R', 'Shiny', 'Programmieren', 'Statistik']
+
+image:
+  caption: Abb. aus App
+  focal_point: Smart
+---
+
+Eine Demo zur Darstellung des Verhaltens des kritischen Wertes bei Verschiebung von Korrelations-Nullhypothesen. Mit dieser App kann einfach geguckt werden, wie sich p-Wert und kritischer Wert bei Anpassung von empirischer Korrelation, hypothetisierter Korrelation und Stichprobengröße verändern.
+
+```{r, echo=FALSE, results='asis', message=FALSE}
+#| echo=FALSE,
+#| results='asis'
+#| 
+run_script <- F
+source('../../../R/build.R')
+build_iframe('https://maxteflon.shinyapps.io/Korrelationshypothesen/')
+```
+

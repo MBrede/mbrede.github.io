@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors on Max Brede</title>
+    <link>https://max-bre.de/authors/</link>
+    <description>Recent content in Authors on Max Brede</description>
+    <generator>Source Themes academia (https://sourcethemes.com/academic/)</generator>
+    <language>de-de</language>
+    <copyright>Copyright &amp;copy; {year}</copyright>
+    
+	    <atom:link href="https://max-bre.de/authors/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://max-bre.de/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/authors/admin/</guid>
+      <description>&lt;h2 id=&#34;hallo-und-willkommen-auf-meiner-website&#34;&gt;Hallo und willkommen auf meiner Website!&lt;/h2&gt;
+&lt;p&gt;Mein Name ist Max Brede und ich bin studierter Dipl. Psych. mit Interesse an allem was mit Daten und R zu tun hat. Diese Website ist eigentlich nur ein Hub für meine auf GitHub gehosteten Veranstaltungsskripte, da Blogdown aber so viele Möglichkeiten bietet, findet man hier jetzt auch ein paar infos zu meiner Person.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

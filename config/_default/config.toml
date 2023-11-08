@@ -1,0 +1,42 @@
+title = "Max Brede"
+baseURL = "https://max-bre.de"
+copyright = "Copyright &copy; {year}"
+googleAnalytics = ""
+disqusShortname = ""
+
+theme = "academia-hugo"
+enableGitInfo = true
+defaultContentLanguage = "de"
+hasCJKLanguage = false
+defaultContentLanguageInSubdir = false
+removePathAccents = true
+paginate = 10
+enableEmoji = false
+footnotereturnlinkcontents = "<sup>^</sup>"
+ignoreFiles = ["\\.qmd$", "\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+publishDir = "docs"
+summaryLength = 20
+
+[markup.goldmark.renderer]
+  unsafe= true
+
+[outputs]
+  home = [ "HTML", "RSS", "JSON" ]
+  section = [ "HTML", "RSS" ]
+
+[blackfriday]
+  hrefTargetBlank = true
+	angledQuotes = false
+	latexDashes = true
+  extensions = ["backslashLineBreak"]
+
+[imaging]
+  resampleFilter = "lanczos"
+  quality = 90
+  anchor = "smart"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  publication_type = "publication_types"
+  author = "authors"

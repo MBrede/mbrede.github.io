@@ -1,0 +1,53 @@
+# Navigation Links
+#   To link a homepage widget, specify the URL as a hash `#` followed by the filename of the
+#     desired widget in your `content/home/` folder.
+#   The weight parameter defines the order that the links will appear in.
+
+
+[[main]]
+  name = "Impressum"
+  url = "privacy#imp"
+  weight = 50
+
+[[main]]
+  name = "Skripte"
+  url = "#skripte"
+  hasChildren = true
+  weight = 40
+
+[[main]]
+  parent = "Skripte"
+  name = "EDV I"
+  url = "skripte/edvi"
+
+[[main]]
+  parent = "Skripte"
+  name = "EDV II"
+  url = "skripte/edvii"
+
+[[main]]
+  parent = "Skripte"
+  name = "Programmieren in R/Experimente in Psychopy"
+  url = "skripte/assumptions"
+
+[[main]]
+  parent = "Skripte"
+  name = "Versuchsplanung"
+  url = "skripte/vplan"
+
+[[main]]
+  parent = "Skripte"
+  name = "R Crashkurs"
+  url = "skripte/crash"
+  
+[[main]]
+  parent = "Skripte"
+  name = "Thesis in R"
+  url = "skripte/thesisr"
+
+# Link to a PDF of your resume/CV from the menu.
+# To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
+# [[main]]
+#    name = "CV"
+#    url = "files/cv.pdf"
+#    weight = 70

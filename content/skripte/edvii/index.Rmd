@@ -1,0 +1,22 @@
+---
+title: "EDV II"
+date: "2022-01-09"
+tags: ['R', 'Statistik']
+
+image:
+  caption: Abb. aus Skript
+  focal_point: Smart
+---
+
+Aufbauend auf dem [Skript zu EDV I](skripte/edvi) beschäftigt sich das Skript zu EDV II mit der R-basierten Auswertung von Datensätzen mit inferenzstatistischen Methoden. Zwar wird noch knapp auf Interpretation und Motivation der Verfahren eingegangen, das Augenmerk liegt aber auf der praktischen Durchführung der Verfahren.
+Die dazugehörige Übung zu Computerunterstützen Datenanalyse II durfte ich in den Sommersemestern 17, 18, 19, 20, 21 und 22 planen und veranstalten.
+
+
+```{r, echo=FALSE, results='asis', message=FALSE}
+#| echo=FALSE,
+#| results='asis'
+
+run_script <- F
+source('../../../R/build.R')
+build_iframe('https://mbrede.github.io/CAU_KIEL_EDVII/')
+```
