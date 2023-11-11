@@ -397,17 +397,93 @@ Setzen der Fallback-Static-IP:"><meta property="og:image" content="https://max-b
 <p>Eine Anleitung für mich selbst, wie meine Nextcloud aufgesetzt wurde.</p>
 <p>Installation des Headless-Images nach der <a href="https://www.pragmaticlinux.com/2021/08/raspberry-pi-headless-setup-with-the-raspberry-pi-imager/">Pi-Installations-Anleitung</a>.</p>
 <p>Setzen der Fallback-Static-IP:</p>
-<pre class="bash"><code>sudo nano /etc/dhcpcd.conf</code></pre>
-<p>Automount der Festplatte einrichten über ncp-config. Auf keinen Fall über die folgende fstab-Einstellung!</p>
-<pre class="bash"><code>mkdir ~/nextcloud
-sudo nano /etc/fstab
-/dev/sda1 /home/pi/nextcloud ext4 defaults,noatime 0 2</code></pre>
+<pre class="bash"><code>sudo apt install dhspcd5
+sudo nano /etc/dhcpcd.conf</code></pre>
 <p>Automatischer Shutdown um 22:00 Uhr:</p>
 <pre class="bash"><code>sudo crontab -e
 00 22 * * * sudo shutdown</code></pre>
 <p>System updaten:</p>
 <pre class="bash"><code>sudo apt-get update
 sudo apt-get upgrade</code></pre>
+<div id="installation-mit-docker-und-docker-compose" class="section level2">
+<h2>Installation mit Docker und Docker-compose</h2>
+<p>Festplatte auto-mounten:</p>
+<pre class="bash"><code>mkdir ~/nextcloud
+sudo nano /etc/fstab
+/dev/sda1 /home/pi/nextcloud ext4 defaults,noatime 0 2</code></pre>
+<p>Docker installieren und einrichten:</p>
+<pre class="bash"><code>curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh ./get-docker.sh
+sudo usermod -aG docker $USER
+sudo reboot</code></pre>
+<p>Docker-Compose installieren:</p>
+<pre><code>sudo apt get install docker-compose</code></pre>
+<p>Damit Nextcloud gezogen werden kann musste man sich letztes mal bei Docker anmelden:</p>
+<pre><code>docker login</code></pre>
+<p>Anschließend die docker-config so anpassen, dass es auf dem Pi funktioniert:</p>
+<pre><code>nano ~/.docker/config.json</code></pre>
+<p>Der Link im auth muss “<a href="https://index.docker.io/v1/" class="uri">https://index.docker.io/v1/</a>” sein.</p>
+<p>Dann die nötigen Ordner erstellen:</p>
+<pre><code>mkdir nextcloud/nextcloud
+mkdir nextcloud/apps
+mkdir nextcloud/config
+mkdir nextcloud/data
+mkdir nextcloud/mariadb</code></pre>
+<p>Und dann das docker-compose.yml wie in der <a href="">Doku des offiziellen Nextcloud-Containers</a> erstellen:</p>
+<pre><code>version: &#39;2&#39;
+
+volumes:
+  nextcloud:~/nextcloud
+  db:~/nextcloud/mariadb
+
+services:
+  db:
+    image: mariadb:10.6
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+
+  app:
+    image: nextcloud
+    restart: always
+    ports:
+      - 8080:80
+    links:
+      - db
+    volumes:
+      - nextcloud/nextcloud:/var/www/html
+      - nextcloud/apps:/var/www/html/custom_apps
+      - nextcloud/config:/var/www/html/config
+      - nextcloud/data:/var/www/html/data
+    environment:
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=db</code></pre>
+<p>Anschließend mit <code>docker-compose up -d</code>starten und für das beste hoffen.</p>
+<p>Mit IP:port kann dann das Admin-Passwort gesetzt werden.</p>
+<p>Um ssl mit lets encrypt einzurichten braucht es dieses <a href="https://github.com/evertramos/nginx-proxy-automation">nginx proxy automation repo</a>. Die Installationsanleitung findet sich <a href="https://github.com/evertramos/nginx-proxy-automation/tree/main/docs">hier</a></p>
+<p>Damit der Nextcloud-Container eingebunden wird muss das environment um die folgenden Variablen ergänzt werden:</p>
+<pre><code>      - VIRTUAL_HOST=your.domain.com
+      - LETSENCRYPT_HOST=your.domain.com
+      - LETSENCRYPT_EMAIL=your.email@your.domain.com
+      - NEXTCLOUD_TRUSTED_DOMAINS=your.domain.com
+      
+networks:
+    default:
+       external:
+         name: proxy</code></pre>
+<p>Anschließend muss das https-Protokoll überschrieben werden laut <a href="https://github.com/evertramos/docker-nextcloud-letsencrypt/tree/master">diesem Repo</a>.</p>
+<p>Abschließend muss vielleicht noch in config/config.php die Domäne als “trusted domain” eingetragen werden. Bosh - fertig.</p>
+</div>
+<div id="installation-mit-install-skript-von-nextcloudpi" class="section level2">
+<h2>Installation mit install-skript von nextcloudpi</h2>
 <p>Nextcloud-Installation nach <a href="https://www.heise.de/tipps-tricks/Nextcloud-auf-dem-Raspberry-Pi-so-geht-s-4363735.html">Anleitung</a>:</p>
 <pre class="bash"><code>curl -sSL https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh | sudo bash</code></pre>
 <p>Wichtig! Zuerst init über Web-Präsenz(<a href="https://nextcloudpi.local/">https://nextcloudpi.local/</a>).</p>
@@ -430,6 +506,7 @@ sudo nano /lib/systemd/system/apache2.service
 After=mysql.service network.target remote-fs.target nss-lookup.targe</code></pre>
 <p>Abschließend noch data- und db-dir auf die Festplatte verschieben.</p>
 <p>Hoffentlich läuft es dann.</p>
+</div>
 
     </div>
 

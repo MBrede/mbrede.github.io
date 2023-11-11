@@ -253,17 +253,93 @@ Bei Entfernen des Kommentars wird das Issue auch direkt als geschlossen markiert
 &lt;p&gt;Eine Anleitung für mich selbst, wie meine Nextcloud aufgesetzt wurde.&lt;/p&gt;
 &lt;p&gt;Installation des Headless-Images nach der &lt;a href=&#34;https://www.pragmaticlinux.com/2021/08/raspberry-pi-headless-setup-with-the-raspberry-pi-imager/&#34;&gt;Pi-Installations-Anleitung&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Setzen der Fallback-Static-IP:&lt;/p&gt;
-&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;sudo nano /etc/dhcpcd.conf&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Automount der Festplatte einrichten über ncp-config. Auf keinen Fall über die folgende fstab-Einstellung!&lt;/p&gt;
-&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;mkdir ~/nextcloud
-sudo nano /etc/fstab
-/dev/sda1 /home/pi/nextcloud ext4 defaults,noatime 0 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;sudo apt install dhspcd5
+sudo nano /etc/dhcpcd.conf&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Automatischer Shutdown um 22:00 Uhr:&lt;/p&gt;
 &lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;sudo crontab -e
 00 22 * * * sudo shutdown&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;System updaten:&lt;/p&gt;
 &lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;sudo apt-get update
 sudo apt-get upgrade&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;installation-mit-docker-und-docker-compose&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Installation mit Docker und Docker-compose&lt;/h2&gt;
+&lt;p&gt;Festplatte auto-mounten:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;mkdir ~/nextcloud
+sudo nano /etc/fstab
+/dev/sda1 /home/pi/nextcloud ext4 defaults,noatime 0 2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Docker installieren und einrichten:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh ./get-docker.sh
+sudo usermod -aG docker $USER
+sudo reboot&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Docker-Compose installieren:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt get install docker-compose&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Damit Nextcloud gezogen werden kann musste man sich letztes mal bei Docker anmelden:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker login&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Anschließend die docker-config so anpassen, dass es auf dem Pi funktioniert:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nano ~/.docker/config.json&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Der Link im auth muss “&lt;a href=&#34;https://index.docker.io/v1/&#34; class=&#34;uri&#34;&gt;https://index.docker.io/v1/&lt;/a&gt;” sein.&lt;/p&gt;
+&lt;p&gt;Dann die nötigen Ordner erstellen:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir nextcloud/nextcloud
+mkdir nextcloud/apps
+mkdir nextcloud/config
+mkdir nextcloud/data
+mkdir nextcloud/mariadb&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Und dann das docker-compose.yml wie in der &lt;a href=&#34;&#34;&gt;Doku des offiziellen Nextcloud-Containers&lt;/a&gt; erstellen:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;version: &amp;#39;2&amp;#39;
+
+volumes:
+  nextcloud:~/nextcloud
+  db:~/nextcloud/mariadb
+
+services:
+  db:
+    image: mariadb:10.6
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+
+  app:
+    image: nextcloud
+    restart: always
+    ports:
+      - 8080:80
+    links:
+      - db
+    volumes:
+      - nextcloud/nextcloud:/var/www/html
+      - nextcloud/apps:/var/www/html/custom_apps
+      - nextcloud/config:/var/www/html/config
+      - nextcloud/data:/var/www/html/data
+    environment:
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=db&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Anschließend mit &lt;code&gt;docker-compose up -d&lt;/code&gt;starten und für das beste hoffen.&lt;/p&gt;
+&lt;p&gt;Mit IP:port kann dann das Admin-Passwort gesetzt werden.&lt;/p&gt;
+&lt;p&gt;Um ssl mit lets encrypt einzurichten braucht es dieses &lt;a href=&#34;https://github.com/evertramos/nginx-proxy-automation&#34;&gt;nginx proxy automation repo&lt;/a&gt;. Die Installationsanleitung findet sich &lt;a href=&#34;https://github.com/evertramos/nginx-proxy-automation/tree/main/docs&#34;&gt;hier&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Damit der Nextcloud-Container eingebunden wird muss das environment um die folgenden Variablen ergänzt werden:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;      - VIRTUAL_HOST=your.domain.com
+      - LETSENCRYPT_HOST=your.domain.com
+      - LETSENCRYPT_EMAIL=your.email@your.domain.com
+      - NEXTCLOUD_TRUSTED_DOMAINS=your.domain.com
+      
+networks:
+    default:
+       external:
+         name: proxy&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Anschließend muss das https-Protokoll überschrieben werden laut &lt;a href=&#34;https://github.com/evertramos/docker-nextcloud-letsencrypt/tree/master&#34;&gt;diesem Repo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Abschließend muss vielleicht noch in config/config.php die Domäne als “trusted domain” eingetragen werden. Bosh - fertig.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;installation-mit-install-skript-von-nextcloudpi&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Installation mit install-skript von nextcloudpi&lt;/h2&gt;
 &lt;p&gt;Nextcloud-Installation nach &lt;a href=&#34;https://www.heise.de/tipps-tricks/Nextcloud-auf-dem-Raspberry-Pi-so-geht-s-4363735.html&#34;&gt;Anleitung&lt;/a&gt;:&lt;/p&gt;
 &lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;curl -sSL https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh | sudo bash&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Wichtig! Zuerst init über Web-Präsenz(&lt;a href=&#34;https://nextcloudpi.local/&#34;&gt;https://nextcloudpi.local/&lt;/a&gt;).&lt;/p&gt;
@@ -286,6 +362,7 @@ sudo nano /lib/systemd/system/apache2.service
 After=mysql.service network.target remote-fs.target nss-lookup.targe&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Abschließend noch data- und db-dir auf die Festplatte verschieben.&lt;/p&gt;
 &lt;p&gt;Hoffentlich läuft es dann.&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     
