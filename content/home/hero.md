@@ -43,6 +43,6 @@ hero_media = "ich.jpeg"
 ## Max Brede
 
 Herzlich willkommen auf meiner Website!
-Ich bin Dipl.-Psychologe mit Interesse an allem, was mit Daten und R zu tun hat. Außerdem durfte ich eine Reihe an Lehrveranstaltungen an der CAU zu Kiel planen und durchführen, zu denen es hier {{< flow_link href="/#skripten" text="Veranstaltungsskripte">}} gibt. Daneben finden Sie hier ein paar Infos zu meinem {{< flow_link href="/#experience" text="beruflichen">}} und {{< flow_link href="/#publications" text="akademischen" >}} Werdegang, außerdem sind {{< flow_link href="/#shiny" text="hier">}} ein paar Shiny-Apps verlinkt, die ich gebaut habe.
+Ich bin Dipl.-Psychologe mit Interesse an allem, was mit Daten und R zu tun hat. Außerdem durfte ich eine Reihe an Lehrveranstaltungen an der CAU zu Kiel planen und durchführen, zu denen es hier {{< flow_link href="/#skripten" text="Veranstaltungsskripte">}} gibt. Daneben finden Sie hier ein paar Infos zu meinem {{< flow_link href="/#experience" text="beruflichen">}} Werdegang und meinen {{< flow_link href="/#publications" text="Publikationen" >}}, außerdem sind {{< flow_link href="/#shiny" text="hier">}} ein paar Shiny-Apps verlinkt, die ich gebaut habe.
 
 Erreichen können Sie mich {{< flow_link href="/#contact" text="hier">}}.

@@ -7,10 +7,46 @@
     <generator>Source Themes academia (https://sourcethemes.com/academic/)</generator>
     <language>de-de</language>
     <copyright>Copyright &amp;copy; {year}</copyright>
-    <lastBuildDate>Wed, 08 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Feb 2024 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="https://max-bre.de/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Data Viz</title>
+      <link>https://max-bre.de/tags/data-viz/</link>
+      <pubDate>Mon, 19 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/data-viz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Wrangling</title>
+      <link>https://max-bre.de/tags/data-wrangling/</link>
+      <pubDate>Mon, 19 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/data-wrangling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://max-bre.de/tags/r/</link>
+      <pubDate>Mon, 19 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Statistik</title>
+      <link>https://max-bre.de/tags/statistik/</link>
+      <pubDate>Mon, 19 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/statistik/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Academia</title>
@@ -31,24 +67,6 @@
     </item>
     
     <item>
-      <title>Data Viz</title>
-      <link>https://max-bre.de/tags/data-viz/</link>
-      <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-bre.de/tags/data-viz/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Data Wrangling</title>
-      <link>https://max-bre.de/tags/data-wrangling/</link>
-      <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-bre.de/tags/data-wrangling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Literaturrecherche</title>
       <link>https://max-bre.de/tags/literaturrecherche/</link>
       <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
@@ -63,15 +81,6 @@
       <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>https://max-bre.de/tags/quarto/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>https://max-bre.de/tags/r/</link>
-      <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-bre.de/tags/r/</guid>
       <description></description>
     </item>
     
@@ -144,15 +153,6 @@
       <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://max-bre.de/tags/experimentieren/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Statistik</title>
-      <link>https://max-bre.de/tags/statistik/</link>
-      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-bre.de/tags/statistik/</guid>
       <description></description>
     </item>
     

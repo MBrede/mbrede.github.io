@@ -39,7 +39,12 @@
   parent = "Skripte"
   name = "R Crashkurs"
   url = "skripte/crash"
-  
+
+[[main]]
+  parent = "Skripte"
+  name = "R Crashkurs - KFN Methodlab"
+  url = "skripte/crash2"
+
 [[main]]
   parent = "Skripte"
   name = "Thesis in R"
