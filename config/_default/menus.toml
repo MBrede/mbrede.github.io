@@ -47,6 +47,11 @@
 
 [[main]]
   parent = "Skripte"
+  name = "Generative AI"
+  url = "skripte/generative_ai"
+
+[[main]]
+  parent = "Skripte"
   name = "Thesis in R"
   url = "skripte/thesisr"
 

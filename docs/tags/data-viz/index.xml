@@ -7,28 +7,10 @@
     <generator>Source Themes academia (https://sourcethemes.com/academic/)</generator>
     <language>de-de</language>
     <copyright>Copyright &amp;copy; {year}</copyright>
-    <lastBuildDate>Mon, 19 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Nov 2023 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="https://max-bre.de/tags/data-viz/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>R Crashkurs - KFN-Methodlabs</title>
-      <link>https://max-bre.de/skripte/crash2/</link>
-      <pubDate>Mon, 19 Feb 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://max-bre.de/skripte/crash2/</guid>
-      <description>
-
-
-&lt;p&gt;Das Skript zu meinem Teil des vom 19.-22.02.2024 am KFN veranstalteten Workshops zu Grundlagen und Anwendungen von R im Rahmen des KFN-MethodLabs.
-Das Skript gibt eine grobe Einführung in R um dann einen Einstig in Auswertungen mit dem &lt;code&gt;tidyverse&lt;/code&gt; und &lt;code&gt;tidymodels&lt;/code&gt; zu geben. Am Ende werden &lt;code&gt;quarto&lt;/code&gt; und Möglichkeiten zur Ergebniszusammenstellung eingeführt.
-Da mein Teil sich auf 2 Tage beschränkte, sind die Themen nicht in der Tiefe behandelt, die ihnen gebührt - eher ein Überblick um die Möglichkeiten von statistischen Auswertungen mit &lt;code&gt;tidy&lt;/code&gt;-Frameworks zu geben.&lt;/p&gt;
-&lt;iframe width=&#34;90%&#34; height=&#34;500&#34; name=&#34;iframe&#34; src=&#34;https://mbrede.github.io/KFN_MethodLab_24/&#34;&gt;
-&lt;/iframe&gt;
-&lt;p&gt;Sollte die Darstellung nicht richtig funktionieren, kann das Skript/die App auch &lt;a href=&#34;https://mbrede.github.io/KFN_MethodLab_24/&#34;&gt;hier&lt;/a&gt; gefunden werden.&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>Vorschläge zur Thesis-Bearbeitung</title>
