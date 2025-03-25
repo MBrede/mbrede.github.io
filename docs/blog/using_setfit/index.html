@@ -29,10 +29,10 @@
   
     
   
-  <meta name="description" content="KI-Projektmanager - FuE FH Kiel GmbH | Wissenschaftlicher Mitarbeiter CAU zu Kiel">
+  <meta name="description" content="SetFit Multilingual Inference Example This tutorial demonstrates how to use a pretrained SetFit model for multilingual text classification inference.">
 
   
-  <link rel="alternate" hreflang="de-de" href="https://max-bre.de/blog/">
+  <link rel="alternate" hreflang="de-de" href="https://max-bre.de/blog/using_setfit/">
 
   
 
@@ -91,15 +91,12 @@
   
 
   
-  <link rel="alternate" href="/blog/index.xml" type="application/rss+xml" title="Max Brede">
-  <link rel="feed" href="/blog/index.xml" type="application/rss+xml" title="Max Brede">
-  
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://max-bre.de/blog/">
+  <link rel="canonical" href="https://max-bre.de/blog/using_setfit/">
 
   
   
@@ -114,12 +111,14 @@
   <meta property="twitter:creator" content="@BredeMax">
   
   <meta property="og:site_name" content="Max Brede">
-  <meta property="og:url" content="https://max-bre.de/blog/">
-  <meta property="og:title" content="Backup-Blog | Max Brede">
-  <meta property="og:description" content="KI-Projektmanager - FuE FH Kiel GmbH | Wissenschaftlicher Mitarbeiter CAU zu Kiel"><meta property="og:image" content="https://max-bre.de/img/icon-192.png">
+  <meta property="og:url" content="https://max-bre.de/blog/using_setfit/">
+  <meta property="og:title" content="Using the AMC | Max Brede">
+  <meta property="og:description" content="SetFit Multilingual Inference Example This tutorial demonstrates how to use a pretrained SetFit model for multilingual text classification inference."><meta property="og:image" content="https://max-bre.de/img/icon-192.png">
   <meta property="twitter:image" content="https://max-bre.de/img/icon-192.png"><meta property="og:locale" content="de-de">
   
+  <meta property="article:published_time" content="2025-03-25T00:00:00&#43;00:00">
   
+  <meta property="article:modified_time" content="2025-03-25T00:00:00&#43;00:00">
   
 
   
@@ -157,7 +156,7 @@
 
 
 
-  <title>Backup-Blog | Max Brede</title>
+  <title>Using the AMC | Max Brede</title>
 
 </head>
 
@@ -304,6 +303,8 @@
 </nav>
 
 
+  <article class="article py-5" itemscope itemtype="http://schema.org/Article">
+
   
 
 
@@ -322,12 +323,65 @@
     
     
     
-    
-    
-    <div class="universal-wrapper py-3">
-      <h1 itemprop="name">Backup-Blog</h1>
+    <div class="article-container py-3">
+      <h1 itemprop="name">Using the AMC</h1>
 
       
+
+      
+      
+
+
+
+<meta content="2025-03-25 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2025-03-25 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>25 Mar 2025</time>
+  </span>
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+
+  
+
+</div>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       
       
@@ -335,44 +389,272 @@
   </div>
 </div>
 
-<div class="universal-wrapper">
-  
+  <div class="article-container">
 
-  
-  
-  <div>
-    <h2><a href="/blog/using_setfit/">Using the AMC</a></h2>
-    <div class="article-style">
+    <div class="article-style" itemprop="articleBody">
       
-      SetFit Multilingual Inference Example This tutorial demonstrates how to use a pretrained SetFit model for multilingual text classification inference.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/academic_collaboration_using_markdown_github/">Akademisches Schreiben mit Github und Quarto</a></h2>
-    <div class="article-style">
-      
-      git und die darauf basierenden Hosting-Services Github und Gitlab sind Tools zur Versionskontrolle, die im Entwicklungskontext den De-Facto Industriestandard darstellen. Der Grund für diesen Erfolg ist dabei die Baum-artige Struktur in der Änderungen am Code-Stamm getracked und nachvollzogen werden können.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/blog/pi_nextcloud/">Nextcloud auf dem Raspi Pi</a></h2>
-    <div class="article-style">
-      
-      Eine Anleitung für mich selbst, wie meine Nextcloud aufgesetzt wurde.
-Installation des Headless-Images nach der Pi-Installations-Anleitung.
-Setzen der Fallback-Static-IP:
-      
-    </div>
-  </div>
-  
 
-  
 
+<div id="setfit-multilingual-inference-example" class="section level1">
+<h1>SetFit Multilingual Inference Example</h1>
+<p>This tutorial demonstrates how to use a pretrained <a href="https://github.com/huggingface/setfit">SetFit</a> model for multilingual text classification inference.</p>
+<p>The script works on Windows, macOS, and Linux, and can be run using Python (via Anaconda or <code>venv</code>) or R with the <code>reticulate</code> package.</p>
+<hr />
+<div id="example-python-code" class="section level2">
+<h2>Example Python Code</h2>
+<p>Here’s how to load the pretrained model and make predictions:</p>
+<pre class="python"><code>from setfit import SetFitModel
+
+model = SetFitModel.from_pretrained(
+    &quot;&lt;model-path&gt;&quot;
+)
+
+model.predict_proba(
+    [
+        &quot;Du schaffst das schon.&quot;,
+        &quot;Tu vas y arriver.&quot;,
+        &quot;Zvládnete.&quot;,
+        &quot;You&#39;ll manage.&quot;,
+        &quot;Te las arreglarás.&quot;,
+        &quot;Saate hakkama.&quot;
+    ]
+)</code></pre>
+<hr />
 </div>
+<div id="setup-and-run-python" class="section level2">
+<h2>Setup and Run (Python)</h2>
+<div id="option-1-using-venv-cross-platform" class="section level3">
+<h3>Option 1: Using <code>venv</code> (cross-platform)</h3>
+<pre class="bash"><code># Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # macOS/Linux
+venv\Scripts\activate     # Windows
+
+# Upgrade pip and install dependencies
+pip install --upgrade pip
+pip install setfit</code></pre>
+<p>Then run the script:</p>
+<pre class="bash"><code>python your_script.py</code></pre>
+<hr />
+</div>
+<div id="option-2-using-anaconda" class="section level3">
+<h3>Option 2: Using Anaconda</h3>
+<pre class="bash"><code># Create new environment
+conda create -n setfit_env python=3.10 -y
+conda activate setfit_env
+
+# Install pip and dependencies
+pip install --upgrade pip
+pip install setfit</code></pre>
+<p>Run your script:</p>
+<pre class="bash"><code>python your_script.py</code></pre>
+<hr />
+</div>
+</div>
+<div id="running-in-r-with-reticulate" class="section level2">
+<h2>Running in R with Reticulate</h2>
+<p>You can use the <a href="https://rstudio.github.io/reticulate/">reticulate</a> package to run the Python model directly from R.</p>
+<p>Note: You may need to install <code>conda</code> or <code>virtualenv</code> support explicitly using <code>reticulate::install_miniconda()</code> or by ensuring <code>virtualenv</code> is available on your system.</p>
+<div id="install-required-packages" class="section level3">
+<h3>1. Install Required Packages</h3>
+<p>In R:</p>
+<pre class="r"><code>install.packages(&quot;reticulate&quot;)</code></pre>
+</div>
+<div id="set-up-python-environment" class="section level3">
+<h3>2. Set Up Python Environment</h3>
+<p>You can use either of the following options:</p>
+<div id="conda" class="section level4">
+<h4>Conda</h4>
+<pre class="r"><code>library(reticulate)
+install_miniconda()  # Only needed if conda is not yet installed
+conda_create(&quot;setfit_env&quot;, packages = &quot;python=3.10&quot;)
+use_condaenv(&quot;setfit_env&quot;, required = TRUE)
+py_install(&quot;setfit&quot;, envname = &quot;setfit_env&quot;, method = &quot;pip&quot;)</code></pre>
+</div>
+<div id="venv-alternative" class="section level4">
+<h4>venv (Alternative)</h4>
+<pre class="r"><code>library(reticulate)
+virtualenv_create(&quot;setfit_env&quot;)
+use_virtualenv(&quot;setfit_env&quot;, required = TRUE)
+py_install(&quot;setfit&quot;, envname = &quot;setfit_env&quot;, method = &quot;pip&quot;)</code></pre>
+</div>
+</div>
+<div id="run-python-code-in-r" class="section level3">
+<h3>3. Run Python Code in R</h3>
+<pre class="r"><code>library(reticulate)
+
+# Use the environment
+use_condaenv(&quot;setfit_env&quot;, required = TRUE)
+
+# Import setfit
+setfit &lt;- import(&quot;setfit&quot;)
+
+# Load the model
+model &lt;- setfit$SetFitModel$from_pretrained(&quot;&lt;redacted for anonymous submission&gt;/amc_setfit&quot;)
+
+# Predict
+texts &lt;- c(
+  &quot;Du schaffst das schon.&quot;,
+  &quot;Tu vas y arriver.&quot;,
+  &quot;Zvládnete.&quot;,
+  &quot;You&#39;ll manage.&quot;,
+  &quot;Te las arreglarás.&quot;,
+  &quot;Saate hakkama.&quot;
+)
+
+probs &lt;- model$predict_proba(texts)
+print(probs)</code></pre>
+</div>
+</div>
+</div>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/machine-learning/">Machine Learning</a>
+  
+  <a class="badge badge-light" href="/tags/implicit-motives/">Implicit motives</a>
+  
+  <a class="badge badge-light" href="/tags/nlp/">NLP</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://max-bre.de">Max Brede</a></h5>
+      <h6 class="card-subtitle">KI-Projektmanager - FuE FH Kiel GmbH | Wissenschaftlicher Mitarbeiter CAU zu Kiel</h6>
+      
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.researchgate.net/profile/Max-Brede" target="_blank" rel="noopener">
+              <i class="fab fa-researchgate"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://scholar.google.com/citations?user=yaaU4SoAAAAJ" target="_blank" rel="noopener">
+              <i class="ai ai-google-scholar"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/MBrede" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.linkedin.com/in/max-brede-a12237191/" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
 
       
 
