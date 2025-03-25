@@ -7,10 +7,37 @@
     <generator>Source Themes academia (https://sourcethemes.com/academic/)</generator>
     <language>de-de</language>
     <copyright>Copyright &amp;copy; {year}</copyright>
-    <lastBuildDate>Sun, 10 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Mar 2025 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="https://max-bre.de/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Implicit motives</title>
+      <link>https://max-bre.de/tags/implicit-motives/</link>
+      <pubDate>Tue, 25 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/implicit-motives/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Machine Learning</title>
+      <link>https://max-bre.de/tags/machine-learning/</link>
+      <pubDate>Tue, 25 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NLP</title>
+      <link>https://max-bre.de/tags/nlp/</link>
+      <pubDate>Tue, 25 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/tags/nlp/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>AI</title>

@@ -12,6 +12,130 @@
     
     
     <item>
+      <title>Using the AMC</title>
+      <link>https://max-bre.de/blog/using_the_amc/</link>
+      <pubDate>Tue, 25 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://max-bre.de/blog/using_the_amc/</guid>
+      <description>
+
+
+&lt;div id=&#34;setfit-multilingual-inference-example&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;SetFit Multilingual Inference Example&lt;/h1&gt;
+&lt;p&gt;This tutorial demonstrates how to use a pretrained &lt;a href=&#34;https://github.com/huggingface/setfit&#34;&gt;SetFit&lt;/a&gt; model for multilingual text classification inference.&lt;/p&gt;
+&lt;p&gt;The script works on Windows, macOS, and Linux, and can be run using Python (via Anaconda or &lt;code&gt;venv&lt;/code&gt;) or R with the &lt;code&gt;reticulate&lt;/code&gt; package.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;example-python-code&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Example Python Code&lt;/h2&gt;
+&lt;p&gt;Here’s how to load the pretrained model and make predictions:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;from setfit import SetFitModel
+
+model = SetFitModel.from_pretrained(
+    &amp;quot;&amp;lt;model-path&amp;gt;&amp;quot;
+)
+
+model.predict_proba(
+    [
+        &amp;quot;Du schaffst das schon.&amp;quot;,
+        &amp;quot;Tu vas y arriver.&amp;quot;,
+        &amp;quot;Zvládnete.&amp;quot;,
+        &amp;quot;You&amp;#39;ll manage.&amp;quot;,
+        &amp;quot;Te las arreglarás.&amp;quot;,
+        &amp;quot;Saate hakkama.&amp;quot;
+    ]
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;setup-and-run-python&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Setup and Run (Python)&lt;/h2&gt;
+&lt;div id=&#34;option-1-using-venv-cross-platform&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Option 1: Using &lt;code&gt;venv&lt;/code&gt; (cross-platform)&lt;/h3&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # macOS/Linux
+venv\Scripts\activate     # Windows
+
+# Upgrade pip and install dependencies
+pip install --upgrade pip
+pip install setfit&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then run the script:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;python your_script.py&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;option-2-using-anaconda&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Option 2: Using Anaconda&lt;/h3&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;# Create new environment
+conda create -n setfit_env python=3.10 -y
+conda activate setfit_env
+
+# Install pip and dependencies
+pip install --upgrade pip
+pip install setfit&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run your script:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;python your_script.py&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;running-in-r-with-reticulate&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Running in R with Reticulate&lt;/h2&gt;
+&lt;p&gt;You can use the &lt;a href=&#34;https://rstudio.github.io/reticulate/&#34;&gt;reticulate&lt;/a&gt; package to run the Python model directly from R.&lt;/p&gt;
+&lt;p&gt;Note: You may need to install &lt;code&gt;conda&lt;/code&gt; or &lt;code&gt;virtualenv&lt;/code&gt; support explicitly using &lt;code&gt;reticulate::install_miniconda()&lt;/code&gt; or by ensuring &lt;code&gt;virtualenv&lt;/code&gt; is available on your system.&lt;/p&gt;
+&lt;div id=&#34;install-required-packages&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;1. Install Required Packages&lt;/h3&gt;
+&lt;p&gt;In R:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;reticulate&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;set-up-python-environment&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2. Set Up Python Environment&lt;/h3&gt;
+&lt;p&gt;You can use either of the following options:&lt;/p&gt;
+&lt;div id=&#34;conda&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Conda&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(reticulate)
+install_miniconda()  # Only needed if conda is not yet installed
+conda_create(&amp;quot;setfit_env&amp;quot;, packages = &amp;quot;python=3.10&amp;quot;)
+use_condaenv(&amp;quot;setfit_env&amp;quot;, required = TRUE)
+py_install(&amp;quot;setfit&amp;quot;, envname = &amp;quot;setfit_env&amp;quot;, method = &amp;quot;pip&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;venv-alternative&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;venv (Alternative)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(reticulate)
+virtualenv_create(&amp;quot;setfit_env&amp;quot;)
+use_virtualenv(&amp;quot;setfit_env&amp;quot;, required = TRUE)
+py_install(&amp;quot;setfit&amp;quot;, envname = &amp;quot;setfit_env&amp;quot;, method = &amp;quot;pip&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;run-python-code-in-r&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;3. Run Python Code in R&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(reticulate)
+
+# Use the environment
+use_condaenv(&amp;quot;setfit_env&amp;quot;, required = TRUE)
+
+# Import setfit
+setfit &amp;lt;- import(&amp;quot;setfit&amp;quot;)
+
+# Load the model
+model &amp;lt;- setfit$SetFitModel$from_pretrained(&amp;quot;&amp;lt;redacted for anonymous submission&amp;gt;/amc_setfit&amp;quot;)
+
+# Predict
+texts &amp;lt;- c(
+  &amp;quot;Du schaffst das schon.&amp;quot;,
+  &amp;quot;Tu vas y arriver.&amp;quot;,
+  &amp;quot;Zvládnete.&amp;quot;,
+  &amp;quot;You&amp;#39;ll manage.&amp;quot;,
+  &amp;quot;Te las arreglarás.&amp;quot;,
+  &amp;quot;Saate hakkama.&amp;quot;
+)
+
+probs &amp;lt;- model$predict_proba(texts)
+print(probs)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Akademisches Schreiben mit Github und Quarto</title>
       <link>https://max-bre.de/blog/academic_collaboration_using_markdown_github/</link>
       <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
