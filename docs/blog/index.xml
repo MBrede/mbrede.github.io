@@ -31,7 +31,7 @@
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;from setfit import SetFitModel
 
 model = SetFitModel.from_pretrained(
-    &amp;quot;&amp;lt;model-path&amp;gt;&amp;quot;
+    &amp;quot;&amp;lt;model-path&amp;gt;&amp;quot; #i.e., &amp;quot;BAAI/bge-small-en-v1.5&amp;quot;
 )
 
 model.predict_proba(
@@ -94,14 +94,14 @@ pip install setfit&lt;/code&gt;&lt;/pre&gt;
 install_miniconda()  # Only needed if conda is not yet installed
 conda_create(&amp;quot;setfit_env&amp;quot;, packages = &amp;quot;python=3.10&amp;quot;)
 use_condaenv(&amp;quot;setfit_env&amp;quot;, required = TRUE)
-py_install(&amp;quot;setfit&amp;quot;, envname = &amp;quot;setfit_env&amp;quot;, method = &amp;quot;pip&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+py_install(&amp;quot;setfit&amp;quot;, envname = &amp;quot;setfit_env&amp;quot;, method = &amp;quot;auto&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;venv-alternative&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;venv (Alternative)&lt;/h4&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(reticulate)
 virtualenv_create(&amp;quot;setfit_env&amp;quot;)
 use_virtualenv(&amp;quot;setfit_env&amp;quot;, required = TRUE)
-py_install(&amp;quot;setfit&amp;quot;, envname = &amp;quot;setfit_env&amp;quot;, method = &amp;quot;pip&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+py_install(&amp;quot;setfit&amp;quot;, envname = &amp;quot;setfit_env&amp;quot;, method = &amp;quot;auto&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;run-python-code-in-r&#34; class=&#34;section level3&#34;&gt;
@@ -115,7 +115,7 @@ use_condaenv(&amp;quot;setfit_env&amp;quot;, required = TRUE)
 setfit &amp;lt;- import(&amp;quot;setfit&amp;quot;)
 
 # Load the model
-model &amp;lt;- setfit$SetFitModel$from_pretrained(&amp;quot;&amp;lt;redacted for anonymous submission&amp;gt;/amc_setfit&amp;quot;)
+model &amp;lt;- setfit$SetFitModel$from_pretrained(&amp;lt;model-path&amp;gt;)# i.e., &amp;quot;BAAI/bge-small-en-v1.5&amp;quot;
 
 # Predict
 texts &amp;lt;- c(

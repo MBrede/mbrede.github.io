@@ -406,7 +406,7 @@
 <pre class="python"><code>from setfit import SetFitModel
 
 model = SetFitModel.from_pretrained(
-    &quot;&lt;model-path&gt;&quot;
+    &quot;&lt;model-path&gt;&quot; #i.e., &quot;BAAI/bge-small-en-v1.5&quot;
 )
 
 model.predict_proba(
@@ -469,14 +469,14 @@ pip install setfit</code></pre>
 install_miniconda()  # Only needed if conda is not yet installed
 conda_create(&quot;setfit_env&quot;, packages = &quot;python=3.10&quot;)
 use_condaenv(&quot;setfit_env&quot;, required = TRUE)
-py_install(&quot;setfit&quot;, envname = &quot;setfit_env&quot;, method = &quot;pip&quot;)</code></pre>
+py_install(&quot;setfit&quot;, envname = &quot;setfit_env&quot;, method = &quot;auto&quot;)</code></pre>
 </div>
 <div id="venv-alternative" class="section level4">
 <h4>venv (Alternative)</h4>
 <pre class="r"><code>library(reticulate)
 virtualenv_create(&quot;setfit_env&quot;)
 use_virtualenv(&quot;setfit_env&quot;, required = TRUE)
-py_install(&quot;setfit&quot;, envname = &quot;setfit_env&quot;, method = &quot;pip&quot;)</code></pre>
+py_install(&quot;setfit&quot;, envname = &quot;setfit_env&quot;, method = &quot;auto&quot;)</code></pre>
 </div>
 </div>
 <div id="run-python-code-in-r" class="section level3">
@@ -490,7 +490,7 @@ use_condaenv(&quot;setfit_env&quot;, required = TRUE)
 setfit &lt;- import(&quot;setfit&quot;)
 
 # Load the model
-model &lt;- setfit$SetFitModel$from_pretrained(&quot;&lt;redacted for anonymous submission&gt;/amc_setfit&quot;)
+model &lt;- setfit$SetFitModel$from_pretrained(&lt;model-path&gt;)# i.e., &quot;BAAI/bge-small-en-v1.5&quot;
 
 # Predict
 texts &lt;- c(
