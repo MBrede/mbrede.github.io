@@ -24,62 +24,108 @@
 &lt;div id=&#34;setfit-multilingual-inference-example&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;SetFit Multilingual Inference Example&lt;/h1&gt;
 &lt;p&gt;This tutorial demonstrates how to use a pretrained &lt;a href=&#34;https://github.com/huggingface/setfit&#34;&gt;SetFit&lt;/a&gt; model for multilingual text classification inference.&lt;/p&gt;
-&lt;p&gt;The script works on Windows, macOS, and Linux, and can be run using Python (via Anaconda or &lt;code&gt;venv&lt;/code&gt;) or R with the &lt;code&gt;reticulate&lt;/code&gt; package.&lt;/p&gt;
+&lt;p&gt;The script works on Windows, macOS, and Linux, and can be run using Python (via conda or &lt;code&gt;venv&lt;/code&gt;) or R with the &lt;code&gt;reticulate&lt;/code&gt; package.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;div id=&#34;example-python-code&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Example Python Code&lt;/h2&gt;
-&lt;p&gt;Here’s how to load the pretrained model and make predictions:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;from setfit import SetFitModel
+&lt;p&gt;Here’s a step-by-step guide to loading the pretrained model and making multilingual predictions:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# Import SetFit Model from the setfit library
+from setfit import SetFitModel
 
-model = SetFitModel.from_pretrained(
-    &amp;quot;&amp;lt;model-path&amp;gt;&amp;quot; #i.e., &amp;quot;BAAI/bge-small-en-v1.5&amp;quot;
-)
+# Load the pretrained model for multilingual classification
+model = SetFitModel.from_pretrained(&amp;quot;automatedMotiveCoder/setfit&amp;quot;)
 
-model.predict_proba(
-    [
-        &amp;quot;Du schaffst das schon.&amp;quot;,
-        &amp;quot;Tu vas y arriver.&amp;quot;,
-        &amp;quot;Zvládnete.&amp;quot;,
-        &amp;quot;You&amp;#39;ll manage.&amp;quot;,
-        &amp;quot;Te las arreglarás.&amp;quot;,
-        &amp;quot;Saate hakkama.&amp;quot;
-    ]
-)&lt;/code&gt;&lt;/pre&gt;
+# List of sample multilingual sentences
+texts = [
+    &amp;quot;Du schaffst das schon.&amp;quot;,  # German
+    &amp;quot;Tu vas y arriver.&amp;quot;,       # French
+    &amp;quot;Zvládnete.&amp;quot;,              # Czech
+    &amp;quot;You&amp;#39;ll manage.&amp;quot;,          # English
+    &amp;quot;Te las arreglarás.&amp;quot;,      # Spanish
+    &amp;quot;Saate hakkama.&amp;quot;           # Estonian
+]
+
+# Predict probabilities for each sentence
+predictions = model.predict_proba(texts)
+print(predictions)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When using the &lt;code&gt;predict_proba()&lt;/code&gt; method, the predicted probabilities for all classes might not sum to 1. This is because the model loaded uses a One-vs-Rest classification approach, which means the model treats each class as a binary classification problem. As a result, the probabilities are independent, and their sum may exceed or fall below 1.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
 &lt;div id=&#34;setup-and-run-python&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Setup and Run (Python)&lt;/h2&gt;
-&lt;div id=&#34;option-1-using-venv-cross-platform&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Option 1: Using &lt;code&gt;venv&lt;/code&gt; (cross-platform)&lt;/h3&gt;
-&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;# Create and activate virtual environment
+&lt;p&gt;Follow one of the two methods below to set up your environment and run the script.&lt;/p&gt;
+&lt;p&gt;Sure! Here’s the updated section with the note that setting up &lt;code&gt;venv&lt;/code&gt; is more lightweight but may require more steps for Windows users:&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;option-1-using-venv&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Option 1: Using &lt;code&gt;venv&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;This method is lightweight and works across all platforms. It’s recommended for users who want a minimal setup. However, note that setting up &lt;code&gt;venv&lt;/code&gt; might be more involved for Windows users compared to using Anaconda.&lt;/p&gt;
+&lt;div id=&#34;installing-python-and-pip&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;strong&gt;Installing Python and &lt;code&gt;pip&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;Before using &lt;code&gt;virtualenv&lt;/code&gt;, make sure you have Python and &lt;code&gt;pip&lt;/code&gt; installed on your system. Follow these steps:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Install Python&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Windows&lt;/strong&gt;: Download the latest Python version from &lt;a href=&#34;https://www.python.org/downloads/&#34;&gt;python.org&lt;/a&gt;. Make sure to check the box that says &lt;strong&gt;Add Python to PATH&lt;/strong&gt; during installation.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;macOS&lt;/strong&gt;: Python should be pre-installed. If not, you can install it using &lt;a href=&#34;https://brew.sh/&#34;&gt;Homebrew&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;brew install python&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Linux&lt;/strong&gt;: Install Python through your package manager. For example, on Ubuntu:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;sudo apt update
+sudo apt install python3 python3-pip&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Install &lt;code&gt;pip&lt;/code&gt;&lt;/strong&gt; (Python’s package installer)&lt;br /&gt;
+You can install &lt;code&gt;pip&lt;/code&gt; by running the following command (if it’s not already installed):&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;python -m ensurepip --upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;installing-virtualenv&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;strong&gt;Installing &lt;code&gt;virtualenv&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;Once Python and &lt;code&gt;pip&lt;/code&gt; are installed, you can install &lt;code&gt;virtualenv&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;pip install virtualenv&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;setting-up-the-virtual-environment&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;strong&gt;Setting Up the Virtual Environment&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;Now, you can create and activate your virtual environment:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;# Create and activate the virtual environment
 python -m venv venv
 source venv/bin/activate  # macOS/Linux
-venv\Scripts\activate     # Windows
-
-# Upgrade pip and install dependencies
-pip install --upgrade pip
+venv\Scripts\activate     # Windows (Note: Windows users may need to run `python -m venv venv` in a terminal with admin rights)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;note-for-windows-users&#34; class=&#34;section level4 callout-note&#34;&gt;
+&lt;h4&gt;Note for Windows Users:&lt;/h4&gt;
+&lt;p&gt;While &lt;code&gt;venv&lt;/code&gt; is more lightweight and doesn’t require extra packages like Anaconda, the setup process on Windows may involve additional steps, such as ensuring the environment variables are set correctly or running the terminal as an administrator for certain permissions. If you encounter difficulties, consider switching to the Anaconda setup, which is more straightforward for Windows.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;upgrade-pip-and-install-dependencies&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;strong&gt;Upgrade pip and Install Dependencies&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;Once the virtual environment is set up and activated, upgrade &lt;code&gt;pip&lt;/code&gt; and install the necessary dependencies:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;pip install --upgrade pip
 pip install setfit&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then run the script:&lt;/p&gt;
+&lt;p&gt;Once the environment is ready, run your script:&lt;/p&gt;
 &lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;python your_script.py&lt;/code&gt;&lt;/pre&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
+&lt;/div&gt;
 &lt;div id=&#34;option-2-using-anaconda&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Option 2: Using Anaconda&lt;/h3&gt;
-&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;# Create new environment
+&lt;p&gt;Anaconda simplifies dependency management, making it especially useful for Windows users. If you don’t have Anaconda installed, follow these installation instructions first:&lt;/p&gt;
+&lt;div id=&#34;installing-anaconda&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;strong&gt;Installing Anaconda&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;You can download and install Anaconda from &lt;a href=&#34;https://www.anaconda.com/products/distribution&#34;&gt;here&lt;/a&gt;. After installation, you can proceed with the following steps to set up your environment:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;# Create a new Anaconda environment
 conda create -n setfit_env python=3.10 -y
 conda activate setfit_env
 
-# Install pip and dependencies
+# Install pip and required dependencies
 pip install --upgrade pip
 pip install setfit&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Run your script:&lt;/p&gt;
+&lt;p&gt;Run the script:&lt;/p&gt;
 &lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;python your_script.py&lt;/code&gt;&lt;/pre&gt;
 &lt;hr /&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;running-in-r-with-reticulate&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Running in R with Reticulate&lt;/h2&gt;
-&lt;p&gt;You can use the &lt;a href=&#34;https://rstudio.github.io/reticulate/&#34;&gt;reticulate&lt;/a&gt; package to run the Python model directly from R.&lt;/p&gt;
+&lt;p&gt;You can use the &lt;a href=&#34;https://rstudio.github.io/reticulate/&#34;&gt;reticulate&lt;/a&gt; package to run the Python model directly from R. This way might be more convenient if you are already used to R, though it will increase the runtime due to the additional overhead.&lt;/p&gt;
 &lt;p&gt;Note: You may need to install &lt;code&gt;conda&lt;/code&gt; or &lt;code&gt;virtualenv&lt;/code&gt; support explicitly using &lt;code&gt;reticulate::install_miniconda()&lt;/code&gt; or by ensuring &lt;code&gt;virtualenv&lt;/code&gt; is available on your system.&lt;/p&gt;
 &lt;div id=&#34;install-required-packages&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;1. Install Required Packages&lt;/h3&gt;
@@ -88,37 +134,41 @@ pip install setfit&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;set-up-python-environment&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;2. Set Up Python Environment&lt;/h3&gt;
-&lt;p&gt;You can use either of the following options:&lt;/p&gt;
-&lt;div id=&#34;conda&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;Conda&lt;/h4&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(reticulate)
-install_miniconda()  # Only needed if conda is not yet installed
-conda_create(&amp;quot;setfit_env&amp;quot;, packages = &amp;quot;python=3.10&amp;quot;)
-use_condaenv(&amp;quot;setfit_env&amp;quot;, required = TRUE)
-py_install(&amp;quot;setfit&amp;quot;, envname = &amp;quot;setfit_env&amp;quot;, method = &amp;quot;auto&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;venv-alternative&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;venv (Alternative)&lt;/h4&gt;
+&lt;p&gt;You can use either of the following options, where venv is generally recommended for all OSes.
+Conda might work better on Windows.&lt;/p&gt;
+&lt;div id=&#34;venv&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;venv&lt;/h4&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(reticulate)
 virtualenv_create(&amp;quot;setfit_env&amp;quot;)
 use_virtualenv(&amp;quot;setfit_env&amp;quot;, required = TRUE)
 py_install(&amp;quot;setfit&amp;quot;, envname = &amp;quot;setfit_env&amp;quot;, method = &amp;quot;auto&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conda-alternative&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Conda (Alternative)&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(reticulate)
+install_miniconda()  # Only needed if conda is not yet installed
+conda_create(&amp;quot;setfit_env&amp;quot;, packages = &amp;quot;python=3.10&amp;quot;)
+use_condaenv(&amp;quot;setfit_env&amp;quot;, required = TRUE)
+py_install(&amp;quot;setfit&amp;quot;, envname = &amp;quot;setfit_env&amp;quot;, method = &amp;quot;auto&amp;quot;, channel = &amp;quot;conda-forge&amp;quot;) # make sure to not use &amp;quot;defaults&amp;quot;-channel (https://www.fz-juelich.de/en/rse/the_latest/the-anaconda-is-squeezing-us)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;run-python-code-in-r&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;3. Run Python Code in R&lt;/h3&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(reticulate)
 
-# Use the environment
-use_condaenv(&amp;quot;setfit_env&amp;quot;, required = TRUE)
+if(!reticulate::virtualenv_exists(&amp;quot;setfit_env&amp;quot;)){
+  virtualenv_create(&amp;quot;setfit_env&amp;quot;, python=&amp;quot;/usr/bin/python3.10&amp;quot;) # make sure your python-version is supported both by reticulate as well as setfit
+  use_virtualenv(&amp;quot;setfit_env&amp;quot;, required = TRUE)
+  py_install(&amp;quot;setfit&amp;quot;, envname = &amp;quot;setfit_env&amp;quot;, method = &amp;quot;auto&amp;quot;)
+}
 
-# Import setfit
+# Use the environment appropriate to your setup
+# use_condaenv(&amp;quot;setfit_env&amp;quot;, required = TRUE) # conda
+use_virtualenv(&amp;quot;setfit_env&amp;quot;, required = TRUE) # virtualenv
+
+
 setfit &amp;lt;- import(&amp;quot;setfit&amp;quot;)
-
-# Load the model
-model &amp;lt;- setfit$SetFitModel$from_pretrained(&amp;lt;model-path&amp;gt;)# i.e., &amp;quot;BAAI/bge-small-en-v1.5&amp;quot;
-
-# Predict
+model &amp;lt;- setfit$SetFitModel$from_pretrained(&amp;quot;automatedMotiveCoder/setfit&amp;quot;)
 texts &amp;lt;- c(
   &amp;quot;Du schaffst das schon.&amp;quot;,
   &amp;quot;Tu vas y arriver.&amp;quot;,
@@ -127,9 +177,42 @@ texts &amp;lt;- c(
   &amp;quot;Te las arreglarás.&amp;quot;,
   &amp;quot;Saate hakkama.&amp;quot;
 )
-
-probs &amp;lt;- model$predict_proba(texts)
+probs &amp;lt;- py_to_r(model$predict_proba(texts)$numpy())
+probs &amp;lt;- cbind(probs, rowSums(probs))
+rownames(probs) &amp;lt;- texts
+colnames(probs) &amp;lt;- c(model$labels, &amp;quot;Sum&amp;quot;)
 print(probs)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                               ach         aff        pow      null       Sum
+## Du schaffst das schon. 0.28847598 0.009921958 0.03042893 0.6491311 0.9779580
+## Tu vas y arriver.      0.07186226 0.017097502 0.02335468 0.8272591 0.9395735
+## Zvládnete.             0.13917435 0.012112386 0.02983335 0.7684807 0.9496008
+## You&amp;#39;ll manage.         0.15298036 0.010970814 0.03377106 0.7286764 0.9263987
+## Te las arreglarás.     0.01812695 0.020106626 0.02863201 0.9044114 0.9712769
+## Saate hakkama.         0.03867746 0.009102110 0.02799679 0.9016467 0.9774230&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When using the &lt;code&gt;predict_proba()&lt;/code&gt; method, the predicted probabilities for all classes might not sum to 1. This is because the model loaded uses a One-vs-Rest classification approach, which means the model treats each class as a binary classification problem. As a result, the probabilities are independent, and their sum may exceed or fall below 1.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;known-issues&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Known issues&lt;/h2&gt;
+&lt;p&gt;There are a few known issues that users might encounter while using this package. These issues are related to setting up the virtual environment (OS-specific) or specific to using R/RStudio. Below are some common issues and their respective fixes:&lt;/p&gt;
+&lt;div id=&#34;reticulate&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;code&gt;reticulate&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;If you encounter errors when converting Python results to R objects, it could be due to an incompatible Python version. To resolve this, ensure that you’re using a Python version supported by &lt;code&gt;reticulate&lt;/code&gt;. You can find the supported range with &lt;code&gt;?virtualenv_create&lt;/code&gt;. Do also make sure that you are using the most recent version of &lt;code&gt;reticulate&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mac&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Mac&lt;/h3&gt;
+&lt;p&gt;On Mac devices with M1, M2,… chips (i.e., ARM64), you may experience architecture errors when using venv. To resolve this, install Python via Homebrew and explicitly use that version in your R script.&lt;/p&gt;
+&lt;p&gt;To do this, first check that homebrew is installed and working:&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;brew doctor&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you do not get a positive response, &lt;a href=&#34;https://brew.sh/&#34;&gt;install brew&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can then install python3.x, where x is the python version you want to install, see the &lt;a href=&#34;https://pypi.org/project/setfit/&#34;&gt;SetFit-pip-page&lt;/a&gt; for supported versions.&lt;/p&gt;
+&lt;pre class=&#34;bash&#34;&gt;&lt;code&gt;brew install python@3.x&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the R script, you can then set the python path for the installed python version:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;python_arm_path &amp;lt;- &amp;quot;/opt/homebrew/bin/python3.x&amp;quot;
+
+# Create a virtual environment explicitly using ARM Python
+virtualenv_create(&amp;quot;setfit_env&amp;quot;, python = python_arm_path)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The rest of the script stays the same.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
