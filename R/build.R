@@ -23,6 +23,7 @@ if(!exists('run_script')){
       )
     )
   
+  
   pubs <- pubs$message$items %>%
     map_dfr(
       ~ tibble(
@@ -40,8 +41,8 @@ if(!exists('run_script')){
         doi = .$DOI,
         publication_types = case_when(.$type == "journal-article" ~ "2",
                                       T ~ "1"),
-        publication = first(.$`container-title`),
-        publication_short = first(.$`short-container-title`),
+        publication = tryCatch( first(.$`container-title`), error = \(e) ""),
+        publication_short = tryCatch(first(.$`short-container-title`), error = \(e) ""),
         abstract = .$abstract
       )
     ) %>% 
